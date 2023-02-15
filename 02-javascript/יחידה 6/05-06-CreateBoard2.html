@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Board</title>
+</head>
+<body>
+    <div id="my-div"></div>
+    <script>
+        function createBoard(arr){
+            let resultString = '';
+            for (let c in arr){
+                resultString += '_ ';
+            }
+            document.getElementById('my-div').innerHTML = `<span id="board">${resultString}</span>`;
+        }
+        createBoard(['d', 'a', 'v', 'i', 'd']);
+        
+
+        function isInword(str, char){
+            let resultString = '';
+            for (let c in str){
+                if (str[c] == char){
+                    resultString += str[c] + ' ';
+                } else {
+                    resultString += '_ ';
+                }
+            }
+            document.getElementById('board').innerHTML = resultString;
+        }
+
+        isInword("david", 'd');
+    </script>
+</body>
+</html>

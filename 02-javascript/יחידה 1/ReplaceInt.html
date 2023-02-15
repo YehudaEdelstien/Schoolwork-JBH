@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Int</title>
+</head>
+<body>
+
+    <p id="before-swap"></p>
+
+    <br>after swap<br>
+
+    <p id="after-swap"></p>
+
+    <script>
+        let x = 0;
+        let y = 0;
+
+        x = prompt("Input a number:");
+        y = prompt("Input another number:");
+        
+        document.getElementById("before-swap").innerHTML  = `"let x = ${x}" <br> "let y = ${y}"`;   // הדפס למשתמש את הערכים
+
+        // החלף בין המספרים על ידי משתנה שלישי
+        let j = x;
+        x = y;
+        y = j;
+
+        document.getElementById("after-swap").innerHTML  = `"x = ${x}" <br> "y = ${y}"`;    // הדפס למשתמש את הערכים המוחלפים
+
+        /*בלי משתנה שלישי
+        
+        שיטה א:
+        x = x + y;
+        y = x - y;
+        x = x - y;
+
+        שיטה מתקדמת:
+        [x, y] = [y, x];
+        */ 
+
+    </script>
+</body>
+</html>

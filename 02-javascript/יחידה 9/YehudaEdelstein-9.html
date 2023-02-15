@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = () => {
+            // 1)
+            console.log(document.body);
+
+            // 2) see HTML
+            // 3)
+            const myDiv = document.getElementById("myDiv");
+
+            // 4)
+            myDiv.innerHTML = "myDiv<br>myDiv";
+            
+            // 5)
+            myDiv.style.color = "red";
+
+            // 6)
+            myDiv.style.backgroundColor = "yellow";
+
+            // 7)
+            const otherDiv = document.createElement("div");
+
+            // 8)
+            otherDiv.innerHTML = "I am the child";
+
+            // 9)
+            myDiv.appendChild(otherDiv);
+
+            // 10) see CSS
+            // 11)
+            const childrenClass = document.createAttribute("class");
+
+            // 12)
+            childrenClass.value = "children";
+
+            // 13)
+            otherDiv.setAttributeNode(childrenClass);
+        }
+    </script>
+    <link rel="stylesheet" href="YehudaEdelstein-9.css">
+</head>
+<body>
+    <!-- 2) -->
+    <div id="myDiv"></div>
+</body>
+</html>

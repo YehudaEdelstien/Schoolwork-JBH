@@ -1,0 +1,29 @@
+form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+input[type="submit"] {
+    background-color: green;
+    color: white;
+}
+
+input[type="reset"] {
+    background-color: red;
+    color: white;
+}
+
+.clear {
+    display: block;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.container {
+    position: relative;
+    width: 100px;
+    margin: 0 auto;
+}

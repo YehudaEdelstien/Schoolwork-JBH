@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle</title>
+</head>
+<body>
+    <p id="rectperimeter"></p>
+    <p id="rectWidth"></p>
+
+    <script>
+        const rectLength = prompt("Input rectangle length:");   // קבל את אורך המלבן
+        const rectWidth = prompt("Input rectangle width:");     // קבל את רוחב המלבן
+
+        const rectperimeter = rectLength * 2 + rectWidth * 2;   // מצא את ההיקף והזן למשתנה חדש
+        document.getElementById("rectperimeter").innerHTML = "The perimeter of the rectangle: " + rectperimeter;    // הדפס למשתמש את ההיקף
+
+        document.getElementById("rectWidth").innerHTML = "The width of the rectangle: " + rectWidth;    // הדפס למשתמש את הרוחב
+
+    </script>
+</body>
+</html>

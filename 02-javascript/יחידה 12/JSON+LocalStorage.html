@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON and LocalStorage</title>
+
+    <script>
+        window.onload = () => {
+
+            const obj = {
+                name: "name1",
+                age: 1
+            }
+
+            document.querySelector("#user-obj-string").innerHTML = JSON.stringify(obj);
+
+            const strObj = JSON.stringify(obj);
+            const obj2 = JSON.parse(strObj);
+
+            obj2.age = 2;
+            for (let key in obj2){
+                console.log([key] + ": " + obj2[key]);
+            }
+
+            localStorage.setItem("obj", JSON.stringify(obj));
+            localStorage.setItem("obj2", JSON.stringify(obj2));
+            
+            obj.name = "name2";
+            obj.age = 3;
+
+            let obj3 = localStorage.getItem("obj");
+            obj3 = JSON.parse(obj3);
+            
+            console.log(obj);
+            console.log(obj2);
+            console.log(obj3);
+        }
+    </script>
+</head>
+
+<body>
+    <h2 id="user-obj-string"></h2>
+</body>
+
+</html>
+<!-- Injection By NetFree -->
+<script  >
+window._shareFileNormalReport = false
+</script>
+<script src="https://netfree.link/injection-script/report-share-file.js" type="text/javascript" async  ></script>
+<script src="https://netfree.link/injection-script/go-payment.js" type="text/javascript" async  ></script>
+<script src="https://netfree.link/injection-script/popup-card-init.js" type="text/javascript" async  ></script>

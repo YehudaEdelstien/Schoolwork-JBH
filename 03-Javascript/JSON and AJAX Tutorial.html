@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>JSON and AJAX</h1>
+        <button id="btn">Fetch info for 3 new animals</button>
+    </header>
+
+    <div id="animal-info"></div>
+
+    <script>
+        const btn = document.getElementById("btn");
+        const animalContainer = document.getElementById("animal-info")
+
+        let counter = 1
+
+        btn.addEventListener('click', function () {
+            const src = `https://learnwebcode.github.io/json-example/animals-${counter}.json`;
+            const req = new XMLHttpRequest();
+            req.open('GET', src);
+            req.onload = function () {
+                const data = JSON.parse(req.responseText);
+                renderHTML(data);
+            }
+            req.send();
+        })
+
+        function renderHTML(data) {
+            let htmlString = "";
+
+            for (let animal of data) {
+                const { name, species: type, foods: { likes, dislikes } } = animal;
+                htmlString += `<p>${name} is a ${type} that likes to eat ${likes.join(" and ")}, but dislikes ${dislikes.join(" and ")}</p>`;
+            }
+
+            animalContainer.insertAdjacentHTML('beforeend', htmlString);
+
+            counter++;
+            if (counter > 3) {
+                btn.remove()
+            }
+        }
+    </script>
+</body>
+
+</html>

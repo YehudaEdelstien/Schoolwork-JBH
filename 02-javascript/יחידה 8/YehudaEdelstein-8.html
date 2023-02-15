@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יחידה 8</title>
+</head>
+
+<body>
+    <script>
+        // 1)
+        let person = {
+            firstName: "Moshe",
+            lastName: "Cohen",
+            age: 30
+        };
+
+        // 2)
+        console.log(person.firstName);
+        console.log(person["firstName"]);
+
+        // 3)
+        for (let value in person) {
+            console.log(value + ": " + person[value]);
+        }
+
+        // 4)
+        person.height = 1.7;
+
+        // 5)
+        person.print = function () {
+            for (let key in this) {
+                console.log(key + ": " + this[key]);
+            }
+        }
+
+        person.print();
+
+        // 6)
+        delete (person.age);
+
+        // 7)
+        person.myAge = 30;
+
+        // 8)
+        function changeObjByValue(obj, num) {
+            obj.myAge = num;
+        }
+        changeObjByValue(person, 40);
+
+        // 9)
+        function changeObjByReference(obj, num) {
+            let x = {...obj}
+            x.myAge = 25;
+            return x
+        }
+
+        console.log(changeObjByReference(person, 25))
+        console.log(person);
+
+    </script>
+</body>
+
+</html>

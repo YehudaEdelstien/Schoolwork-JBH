@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBH Project1</title>
+    <link rel="stylesheet" href="./project3css.css">
+    <link rel="icon" href="./media/JBH-LOGO-03.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="header-line"></div>
+    <header>
+        <img id="logo" src="./media/JBH-LOGO-03.png" alt="logo">
+        <h1> קורס FSWD </h1>
+        <h2> JBH - מוח יהודי בהייטק </h2>
+    </header>
+
+    <nav class="sticky">
+        <ul id="nav-links">
+            </a>
+            <a href="#description">
+                <li class="link-button"> תיאור </li>
+            </a>
+            <a href="#participants">
+                <li class="link-button"> משתתפים </li>
+                <a href="#pictures">
+                    <li class="link-button"> רשמים </li>
+                </a>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="section-desc">
+            <h2 id="description"> קורס Full stack ופיתוח אפליקציות </h2>
+            <p>
+                הקורס שלנו מדהים מאד... <br>
+                כל אחד יכול להשתתף... (כמעט)... <br>
+                עושים הרבה שטייגען בבוקר... (ב"ה)... <br>
+                לומדים קשה בצהריים... (בדרך כלל)... <br>
+                אבל בסוף יהיה פרנוסעה בשפע... (בעז"ה)... <br>
+                ויאללה תבואו!!!!!
+            </p>
+
+        </section>
+
+
+        <table id="participants">
+            <caption> משתתפים </caption>
+            <thead>
+                <tr>
+                    <th> שם </th>
+                    <th> טלפון </th>
+                    <th> מייל </th>
+                    <th> ברכות </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> יהודה אדלשטיין </td>
+                    <td> 0532480071 </td>
+                    <td> dmfr56@gmail.com </td>
+                    <td> <audio controls src="./media/ברכה לgbh.aac"></audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td> מוישי ברגר </td>
+                    <td> 0587647123 </td>
+                    <td> meby123b@gmail.com </td>
+                    <td> <audio controls src="./media/ברכה לgbh.aac"></audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td> יהודה ביר </td>
+                    <td> 0525268431 </td>
+                    <td> y.bir@gmail.com </td>
+                    <td> <audio controls src="./media/ברכה לgbh.aac"></audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td> חיים לזנובסקי </td>
+                    <td> 052766644 </td>
+                    <td> h052766644@gmail.com </td>
+                    <td> <audio controls src="./media/ברכה לgbh.aac"></audio>
+                    </td>
+                </tr>
+                <tr>
+                    <td> יעקב שולמן </td>
+                    <td> 0504130204 </td>
+                    <td> shulman@gmail.com </td>
+                    <td> <audio controls src="./media/ברכה לgbh.aac"></audio>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <section id="pictures">
+            <img class="experience-images" src="./media/IMG_20221109_152338.jpg" alt="">
+            <img class="experience-images" src="./media/IMG_20221109_152326.jpg" alt="">
+            <video class="experience-images" autoplay muted loop src="./media/VID_20221115_145522.mp4"></video>
+            <img class="experience-images" src="./media/IMG_20221109_152255.jpg" alt="">
+            <img class="experience-images" src="./media/IMG_20221109_152346.jpg" alt="">
+            <video class="experience-images" autoplay muted loop src="./media/VID_20221115_145552.mp4"></video>
+            <img class="experience-images" src="./media/IMG_20221109_152450.jpg" alt="">
+            <video class="experience-images" autoplay muted loop src="./media/VID_20221115_130905.mp4"></video>
+
+        </section>
+
+
+        <form>
+            <h2> הרשמו כאן עכשיו! </h2>
+
+            <fieldset>
+                <div>
+                    <div>
+                        <input type="text" name="first-name" id="first-name">
+                        <label for="first-name"> שם פרטי </label>
+                    </div>
+                    <div>
+                        <input type="text" name="last-name" id="last-name">
+                        <label for="last-name"> שם משפחה </label>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <input type="email" name="email" id="email">
+                        <label for="email"> מייל </label><br>
+                    </div>
+                    <div>
+                        <input type="tel" minlength="9" pattern="^[0-9]*$" name="tel" title="הכנס ספרות בלבד" id="tel">
+                        <label for="tel"> טלפון </label><br>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex-grow-3">
+                        <label for="location"> מיקום
+                            <select name="location" id="">
+                                <option value=""> (בחר מיקום) </option>
+                                <option value="jerusalem"> ירושלים</option>
+                                <option value="bnei-brak"> בני ברק </option>
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        מצב אישי:
+                    </div>
+                    <div>
+                        <label><input type="radio" name="status" value="single"> רווק</label>
+                    </div>
+                    <div>
+                        <label><input type="radio" name="status" value="married"> נשוי</label>
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <label for="ads"><input type="checkbox" name="ads" id="ads"> מועניין לקבל עידכונים בוואצאפ-פון 😝
+                        </label><br>
+                    </div>
+                </div>
+
+                <input type="submit" value="שלח">
+
+            </fieldset>
+
+        </form>
+
+        <section id="empty"></section>
+    </main>
+
+
+
+    <footer>
+        <div class="ending"> חלק ממקורות הלימוד שלנו:<br>
+            <a href="https://www.codecademy.com/learn" target="_blank"> codecademy </a><br>
+            <a href="https://webmaster.org.il/" target="_blank"> webmaster </a><br>
+            <a href="https://www.freecodecamp.org/" target="_blank"> freecodecamp </a>
+            <p>made by <br> Yehuda Edelstein & Moishy Berger</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

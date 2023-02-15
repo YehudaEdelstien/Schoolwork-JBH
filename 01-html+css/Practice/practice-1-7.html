@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice 1-7</title>
+
+    <style>
+        .link-image {
+            max-width: 200px;
+            width: 30%;
+            float: right;
+            margin: 5px;
+        }
+
+        .link-image:hover {
+            border: 2px solid blue;
+        }
+
+        #title {
+            background-color: aqua;
+            position: sticky;
+            top: 0;
+            margin: 10px;
+            padding: 10px;
+            
+        }
+
+        #left-image {
+            width: 60px;
+            position: absolute;
+            left: 15%;
+        }
+        
+        audio,
+        video {
+            clear: both;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1 id="title"> וזאת הכותרת אשר ביקשו שאכתוב בתחילת הדף </h1>
+    <img src="./JBH-LOGO.png" alt="J.B.H. logo" id="left-image">
+
+    <br>
+    <div>
+        <img src="./LINK.png" alt="לינק!!!" title="לינק!!!1" class="link-image">
+    </div>
+    <div>
+        <img src="./LINK.png" alt="לינק!!!" title="לינק!!!2" class="link-image">
+    </div>
+    <div>
+        <img src="./LINK.png" alt="לינק!!!" title="לינק!!!3" class="link-image">
+    </div>
+
+    <br>
+    
+    <audio src="./Hey Listen - OoT.mp3" controls></audio>
+    
+    <iframe width="692" height="389" src="https://www.youtube.com/embed/7PORMYx30xE?list=PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB" title="HTML Tutorial for Beginners - 23 - iframe element" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</body>
+
+</html>
+
+<!--
+    Quiz Answers:
+
+1)  A block will take up a new line and be default take up the entire width of the page
+    an inline block will stay in the previous line and will take the minimum width it needs.
+
+2)  If an element bumps up against a floating element, it go down until it is below the floating element
+
+3)  The default element, it is positioned according to the flow of the page.
+    It does not need size and placment values.
+    It cannot be an absolute element as well.
+
+4)  Part of flow: static, relative, sticky.
+    Not part of flow: absolute, fixed
+
+5)  'autoplay muted'
+-->

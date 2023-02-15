@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modulo</title>
+</head>
+<body>
+    <h1>First number: is it + one odd?</h1>
+    <h2>Don't arsk us about: second numbers.</h2>
+    <br>
+    <p id="isItModulo"></p>
+
+    <script>
+        const num1 = prompt("Input a number:");
+        const num2 = prompt("Input another number:");
+
+        let x = Number(num1);
+        let y = Number(num2);
+        
+        x += 1;
+        y += 5; //what's this for??? stupid homework...
+
+        const isItModulo = (x % 2) > 0; // בדוק אם המספר זוגי
+
+        document.getElementById("isItModulo").innerHTML = isItModulo;
+    </script>
+</body>
+</html>

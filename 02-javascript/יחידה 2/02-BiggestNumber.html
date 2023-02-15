@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biggest Number</title>
+</head>
+<body>
+    <h1 id="biggest-number"></h1>
+    <script>
+        let num1 = prompt("Input a number!");
+        let num2 = prompt("Input another number!");
+        let num3 = prompt("Input a third number!");
+
+        let biggestNum = Math.max(num1, num2, num3);    // מצא את המספר הכי גדול מבין הנתונים
+
+        document.getElementById("biggest-number").innerHTML = "The biggest number was " + biggestNum;
+    </script>
+</body>
+</html>

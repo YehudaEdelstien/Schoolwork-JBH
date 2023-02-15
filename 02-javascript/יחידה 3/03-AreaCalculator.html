@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator</title>
+</head>
+<body>
+    <h1>Area Calculator</h1>
+    
+    Shape: 
+    <select name="shape-selecter" id="shape" onchange="toggleShapeOptions()">   <!--קורא לפונקציה כשהערך משתנה-->
+        <option value="rectangle">rectangle</option>
+        <option value="triangle">triangle</option>
+        <option value="circle">circle</option>
+    </select>
+    <br><br>
+
+    <span id="height-text">Height: </span>
+    <input type="number" id="height">
+    <br><br>
+
+    <span id="width-field">Width:
+    <input type="number" id="width"><br><br></span>
+    
+
+    <button onclick="printArea()">Check Area</button>
+
+    <script>
+        function printArea () {
+            shape = document.getElementById("shape").value;
+            height = document.getElementById("height").valueAsNumber;
+            width = document.getElementById("width").valueAsNumber;
+            alert("area is: " + getArea(shape, height, width))  // הדפס את הפונקציה עם הפרמטרים שכתובים במסמך
+        }
+        
+        function getArea(shape, h, w) { // פונקציה למצוא שטח שמקבלת צורה, גובה ורוחב. הגובה גם משמש כרדיוס לעיגול
+            if (shape == "circle"){
+                return Math.PI * h * h; // πr^2. h is r
+            } else {
+                let a = h * w;          // גובה כפול רוחב
+                if (shape == "triangle") {
+                    a /= 2;             // חלקי שתיים, במקרה שזה משולש
+                }
+                return a;
+            }
+        }
+
+        function toggleShapeOptions () {    // משנה את הטופס אם המשתמש בחר מעגל או לא 
+            shape = document.getElementById("shape").value;     // קבל את הצורה הנבחרת
+            if (shape == "circle") {    // אם זה עיגול, שנה גובה לרדיוס, ומחק את הרוחב 
+                document.getElementById("height-text").innerHTML = "Radius: ";
+                document.getElementById("width-field").style.display = "none";
+            } else {                    // אחרת, שנה לגובה והחזר את הרוחב
+                document.getElementById("height-text").innerHTML = "Height: ";
+                document.getElementById("width-field").style.display = "initial";
+            }
+        }
+    </script>
+</body>
+</html>

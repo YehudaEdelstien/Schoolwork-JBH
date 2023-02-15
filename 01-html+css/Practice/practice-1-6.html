@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice 1-6</title>
+    <link rel="stylesheet" href="css-practice-1-6.css">
+</head>
+
+<body>
+
+    <form method="get" action="">
+        <fieldset>
+            <label class="clear" for="first-name"> שם פרטי:
+                <input class="left" type="text" name="first-name" id="first-name" placeholder="ישראל">
+            </label>
+
+            <label class="clear" for="last-name"> שם משפחה:
+                <input class="left" type="text" name="last-name" id="last-name" placeholder="ישראלי">
+            </label>
+
+            <label class="clear" for="email"> מייל:
+                <input class="left" type="email" name="email" id="email" placeholder="example@123.com">
+            </label>
+
+            <label class="clear" for="age"> גיל:
+                <input class="left" type="number" name="age" id="age" max="120" min="0" required>
+            </label>
+
+            <label class="clear" for="tele"> טלפון:
+                <input class="left" type="tel" name="tele" id="tele" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    placeholder="טלפון לדוגמא: 050-000-0000"
+                    title=" נא להזין מספר טלפון תקני עם מקפים. לדוגמא: 050-000-0000 ">
+            </label>
+
+            <label class="clear" for="birth-date"> תאריך לידה:
+                <input class="left" type="date" name="birth-date" id="birth-date">
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <label class="clear" for="location"> מיקום הקורס:
+                <input class="left" type="text" value="ירושלים" name="location" id="location" readonly>
+            </label>
+
+            <label for="marital-status" class="clear"> מצב משפחתי:
+                <select class="clear left" name="marital-status" id="marital-status">
+                    <option value="">(בחר אחד)</option>
+                    <option value="single">רווק</option>
+                    <option value="married">נשוי</option>
+                    <option value="divorced">גרוש</option>
+                </select>
+            </label>
+        </fieldset>
+
+        <fieldset>
+            <div class="clear"> באיזה מידה היית ממליץ על הקורס לחבר?
+                <label class="clear" for="recommend-very"><input type="radio" name="will-recommend" id="recommend-very" value="very"> מאוד
+                </label>
+                <label class="clear" for="recommend-little"><input type="radio" name="will-recommend" id="recommend-little" value="a little"> קצת
+                </label>
+                <label class="clear" for="recommend-no"><input type="radio" name="will-recommend" id="recommend-no" value="no"> כלל לא
+                </label>
+            </div>
+            <br>
+
+            <div class="clear"> מה אתה אוהב בקורס? <br>
+                <label for="likes-classes"><input type="checkbox" name="likes-classes" id="likes-classes" checked> שיעורים </label>
+                <label for="likes-friends"><input type="checkbox" name="likes-friends" id="likes-friends"> חברים </label>
+                <label for="likes-teachers"><input type="checkbox" name="likes-teachers" id="likes-teachers"> מרצים </label>
+                <label for="likes-homework"><input type="checkbox" name="likes-homework" id="likes-homework"> תרגילים </label>
+                <label for="likes-community"><input type="checkbox" name="likes-community" id="likes-community"> קהילה </label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <textarea rows="4" cols="50" minlength="50"> נשמח לשמוע הערות לשיפור</textarea>
+        </fieldset>
+
+        <fieldset>
+        <label for="id-pic"> צילום ת"ז: <input type="file" accept="image/*" name="id-pic" id="id-pic"></label>
+        <label class="clear" for="terms"><input type="checkbox" name="agreed-to-terms" id="terms"> אני מסכים לתנאי השימוש </label>
+        <label class="clear" for="promotions"><input type="checkbox" name="wants-promotions" id="promotions"> אני רוצה מיילים שיווקיים</label>
+
+        </fieldset>
+
+        <div class="container">
+            <input type="submit" value="שלח">
+            <input type="reset" value="אפס">
+        </div>
+
+    </form>
+
+</body>
+
+</html>
+
+<!--
+    Quiz Answers:
+
+1)  A label describes an input can be attached to an input via the "for" attribute.
+
+2)  'readonly' defines a field that cannot be changed.
+    'disabled' defines a field that is not used.
+
+3)  'value' defines a default starting value, which if not changed by the user, will be submitted.
+    'placeholder' places a hint as to what text to place, but is valueless.
+
+4)  <select> for the container and <option> for the options.
+
+5)  With the 'required' attribute.
+
+6)  'pattern'
+
+7)  'password'
+
+8)  'type="email"'
+
+9)  The radio button is for choosing one option only.
+    checkbox is for selecting multiple options.
+
+10) <input type="field" accept=".pdf">
+    'multiple'
+
+11) To group multiple input fields together.
+
+12) The 'name' attribute and the value of the 'value' attribute of the button.
+
+13) It pulls the elemnt closer to the direction of the negative margin
+
+14) selector[attribute="value"]
+-->

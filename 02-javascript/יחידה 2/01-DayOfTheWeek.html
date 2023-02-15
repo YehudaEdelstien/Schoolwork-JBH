@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day of the Week</title>
+</head>
+
+<body>
+    <h1 id="day-of-the-week"></h1>
+    <script>
+        const day = Number(prompt("Choose a day using a number from one to seven:"));
+        let answer;     // כאן נשמור את הפלט שלנו
+
+        switch (day) {  // בדוק אם המשתנה בסוגריים שווה לערך של אחד מהמקרים הבאים
+
+            case 1:     // במקרה שהמקרה שווה לאחד
+                answer = "Sunday!";     //התשובה היא יום ראשון!
+                break;  // עד כאן המקרה
+
+            case 2:     // במקרה שהמקרה שווה לשנים
+                answer = "Monday!";     //התשובה היא יום ראשון!
+                break;  // עד כאן המקרה
+
+            case 3:     //כנ"ל
+                answer = "Tuesday!";
+                break;
+
+            case 4:
+                answer = "Wednesday!";
+                break;
+
+            case 5:
+                answer = "Thursday!";
+                break;
+
+            case 6:
+                answer = "Friday!";
+                break;
+
+            case 7:
+                answer = "SHABBOS!!!";
+                break;
+
+            default:    // במקרה שהוא לא תואם למקרה אחר 
+                answer = "Not a number of week";
+                break;
+        }
+
+        document.getElementById("day-of-the-week").innerHTML = answer;
+    </script>
+</body>
+
+</html>

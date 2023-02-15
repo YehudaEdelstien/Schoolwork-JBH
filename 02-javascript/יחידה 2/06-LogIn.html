@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+</head>
+<body>
+    
+    <img src="https://i.giphy.com/media/Ip3rI8W1YcXHO5MyHQ/giphy.webp" alt="nice">
+
+    <script>
+        let name = "moshe";
+        let password = "123";
+
+        askForName();   // תריץ פונקציה שהוגדרה מראש שני שורות למטה
+
+        function askForName() {
+            // בקש מהמשתמש ערך ובדוק אם זה השם משתמש
+            if (prompt("Input name. Hint: 'moshe'") == name){
+                // אם זה היה, בקש סיסמה ובדוק שהיא נכונה
+                if (prompt("Input password. Hint: '123'") == password){
+                    alert("You have succesfuly logged in!");    // שלח הודעה שהכניסה בוצעה בהצלחה
+                } else { // אם הסיסמה לא נכונה
+                    alert("Wrong password. Start again.");      // שלח הודעה שצריך להתחיל שוב
+                    askForName();   // התחל שוב מתחילת הפונקציה
+                }
+            } else {    // אם השם לא נכון
+                alert("Wrong name! Try again.");    // שלח הודעה שצריך להתחיל שוב
+                askForName();       // התחל שוב מתחילת הפונקציה
+            }
+        }
+    </script>
+</body>
+</html>

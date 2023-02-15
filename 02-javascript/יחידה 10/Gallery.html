@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+
+    <style>
+        #gallery {
+            width: 500px;
+            margin: auto;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="gallery">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/1_dia_de_vida.jpg/1280px-1_dia_de_vida.jpg" alt="kitten" id="gallery-img">
+        <div id="control">
+            <button onclick="changePic(-1)">Previous</button>
+            <button onclick="changePic(1)">Next</button>
+        </div>
+    </div>
+
+
+    <script>
+        let imgs = [
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/1_dia_de_vida.jpg/1280px-1_dia_de_vida.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Juvenile_Ragdoll.jpg/1024px-Juvenile_Ragdoll.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Youngkitten.JPG/1280px-Youngkitten.JPG",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Kitten_Sibling_Pair.jpg/1920px-Kitten_Sibling_Pair.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/1-month-old_kittens_32.jpg/1920px-1-month-old_kittens_32.jpg"
+        ]
+        const galleryImg = document.getElementById("gallery-img");
+
+        let currImg = 0;
+
+        function changePic(dir){
+            currImg += dir;
+
+            if (currImg < 0){
+                currImg = imgs.length - 1;
+            } else if (currImg > imgs.length - 1){
+                currImg = 0;
+            }
+
+            galleryImg.setAttribute("src", imgs[currImg]);
+
+        }
+
+        galleryImg.addEventListener("click", () => {message("hello")});
+
+
+        function message(str){
+            console.log(str);
+        }
+    </script>
+</body>
+</html>

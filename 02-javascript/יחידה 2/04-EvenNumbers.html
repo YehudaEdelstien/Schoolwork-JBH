@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even Numbers</title>
+</head>
+
+<body>
+    <h1>You gave me <span id="even-num-count"></span> whole even numbers!</h1>
+    <script>
+        let evenNumbers = 0;
+
+        for (let i = 0; i < 4; i++) {   // https://www.w3schools.com/js/js_loop_for.asp  לולאה שחוזרת על עצמה 4 פעמים. ראה 
+            let x = Number(prompt("Number " + (i + 1) + "/4"));
+
+            if (x % 2 == 0) {    // אם המספר זוגי
+                evenNumbers++;  // תספור את המספר
+            }
+        }
+
+        document.getElementById("even-num-count").innerHTML = evenNumbers;
+    </script>
+</body>
+
+</html>

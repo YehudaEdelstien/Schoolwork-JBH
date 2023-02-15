@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big or Small</title>
+</head>
+<body>
+    <h1 id="number-size">Normal</h1>
+    <script>
+        let x = prompt("Give me a number");
+
+        let numberSize = "Normal";  // ערך לבררירת מחדל של הפלט
+
+        if (x > 50) {       // אם המשפט איקס גדול מחמישים הוא נכון
+            numberSize = "Big"      // המספר גדול, ונשנה את הפלט
+        }
+        else if (x < 20) {  // אחרת, אם המשפט איקס קטן מעשרים נכון
+            numberSize = "Small"    // המספר קטן
+        }
+
+        document.getElementById("number-size").innerHTML = numberSize;
+    </script>
+</body>
+</html>

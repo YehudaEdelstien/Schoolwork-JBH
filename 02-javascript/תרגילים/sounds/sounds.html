@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    const AudioContext = window.AudioContext;
+    const audioCtx = new AudioContext();
+    // the audio tag in HTML, where holds the original audio clip
+    const audioTag = document.getElementById('audioTag');
+    // create audio source in web audio api
+    const sourceNode = audioContext.createMediaElementSource(audioTag);
+</script>
+
+</html>

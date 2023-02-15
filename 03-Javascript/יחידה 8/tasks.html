@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+
+    <style>
+        .task {
+            border: 2px solid gray;
+            width: 250px;
+            margin: 2px;
+            padding: 5px;
+            overflow-wrap: break-word;
+        }
+
+        .content {
+            font-family: 'Courier New', Courier, monospace
+        }
+
+        .remove-btn {
+            color: red;
+        }
+
+        .edit-btn {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="taskAdder">
+        <input id="task-name">
+        <button onclick="addTask()">Add new Task</button>
+    </div>
+    <div id="tasks"></div>
+
+    <script>
+        const tasksDiv = document.getElementById("tasks");
+        const taskNameInput = document.getElementById("task-name");
+
+        function addTask() {
+            if (!taskNameInput.value) return;
+
+            const task = document.createElement("div");
+            task.classList.add("task");
+
+            const content = document.createElement("div");
+            content.innerHTML = taskNameInput.value;
+            content.classList.add("content");
+            task.appendChild(content);
+
+            const removeButton = document.createElement("button");
+            removeButton.innerHTML = "✖";
+            removeButton.classList.add("remove-btn");
+            removeButton.addEventListener("click", removeTask);
+            task.appendChild(removeButton);
+
+            const editButton = document.createElement("button");
+            editButton.innerHTML = "🖉";
+            editButton.classList.add("edit-btn");
+            editButton.addEventListener("click", renameTask)
+            task.appendChild(editButton);
+
+            tasksDiv.appendChild(task);
+            taskNameInput.value = ''
+        }
+
+        function removeTask() {
+            this.closest('.task').remove();
+        }
+
+        function renameTask() {
+            const taskDiv = this.closest(".task")
+            const contentDiv = taskDiv.querySelector(".content");
+            contentDiv.innerHTML = prompt("New name:");
+
+        }
+    </script>
+</body>
+
+</html>

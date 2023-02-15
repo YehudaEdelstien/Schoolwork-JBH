@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangular</title>
+</head>
+<body>
+    <div id="triangular"></div>
+
+    <script>
+        function stars(num){
+            let triStr = '';
+            
+            for (let i = 5; i > 0; i--) {
+                for (let j = 0; j < i; j++) {
+                    triStr += '*'
+                }
+                triStr+="<br>"
+            }
+
+            document.getElementById("triangular").innerHTML = triStr;
+        }
+
+        stars(5);
+    </script>
+</body>
+</html>

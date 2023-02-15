@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice 1-10</title>
+    <style>
+        /* problem 1 */
+        .flex {
+            display: flex;
+        }
+
+        .problem-1 div {
+            height: 250px;
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        @media screen and (550px > width){
+            .problem-1 {
+                flex-direction: column;
+            }
+        }
+
+        /* problem 2 */
+
+        .problem-2 {
+            width: 500px;
+            height: 500px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .problem-2 > div {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* problem 3*/
+        .problem-3  div{
+            height: 100px;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="problem-1 flex">
+        <div style="background-color: green;"></div>
+        <div style="background-color: pink;"></div>
+    </section>
+
+    <section class="problem-2 flex" style="background-color: black;">
+        <div style="background-color: white;"></div>
+    </section>
+
+    <section class="problem-3 flex" style="background-color: #fff;">
+        <div style="background-color: #fff;">1</div>
+        <div style="background-color: #ddd;">2</div>
+        <div style="background-color: #bbb;">3</div>
+        <div style="background-color: #999;">4</div>
+        <div style="background-color: #777;">5</div>
+    </section>
+</body>
+</html>
+
+<!--
+    Quiz Answers:
+
+1)  'align-self: left;' does not exist.
+
+2)  'flex-grow'
+
+3)  -1
+
+4)  The 1 and 10 wil take 1/6, the 2 and 20 will take 2/6, and the 3 and 30 will take 3/6 of the flexbox.
+
+-->

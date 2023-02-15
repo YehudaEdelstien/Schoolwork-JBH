@@ -1,0 +1,16 @@
+Question 1:
+The global object, the default when running in lazy mode.
+
+Question 2:
+The global this, which is the lexical this from where the arrow function was written. 
+We can fix the function by turning it into a regular function expression, in which case the value of this will be the object calling the function, which in this case, is myObj.
+
+Question 3:
+Whatever is calling the function will pass it's this value to it. If called outside of any function or object, it will be the global object
+
+Question 4:
+The global this, which is the lexical this from where the arrow function was written.
+
+Question 5:
+The global this, which is the lexical this from where the arrow function was written. we can fix the function by turning it into a regular function expression.
+We can fix it by changing the arrow function to a normal function., and then the this value will be the element which is calling the function

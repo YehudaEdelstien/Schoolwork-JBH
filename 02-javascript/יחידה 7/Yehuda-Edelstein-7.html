@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יחידה 7</title>
+</head>
+
+<body>
+    <script>
+        // תרגיל 1
+        function arr1(arr = []) {    // reinitialize all elements of array to 0
+            arr.forEach((element, index) => {
+                arr[index] = 0;
+            });
+        }
+
+        let myArr0 = [1, 2, 3, 4];
+        arr1(myArr0);
+        console.log(myArr0);
+
+        // תרגיל 2
+        function arr10(arr = []) {   // return a mapped array with 10 for numbers below 10 and 100 for numbers greater than 10
+            return arr.map(element => element <= 10 ? 10 : 100);
+        }
+
+        let myArr1 = [11, 2, 30, 4];
+        console.log(arr10(myArr1));
+
+        // תרגיל 3
+        function myFilter(arr = []) { // return an array only with even elements greater than 10
+            return arr.filter(element => element > 10 && element % 2 == 0);
+        }
+        let myArr2 = [11, 2, 30, 19];
+        console.log(myFilter(myArr2));
+
+        // תרגיל 4
+        function myReduce(arr = []) {       // return sum of even numbers in an array
+            return arr.reduce((accumulator, value) => value % 2 == 0 ? accumulator + value : accumulator);
+        }
+        let myArr3 = [10, 2, 30, 19];
+        console.log(myReduce(myArr3));
+    </script>
+</body>
+
+</html>
+<!-- Injection By NetFree -->
+<script  >
+window._shareFileNormalReport = false
+</script>
+<script src="https://netfree.link/injection-script/report-share-file.js" type="text/javascript" async  ></script>
+<script src="https://netfree.link/injection-script/go-payment.js" type="text/javascript" async  ></script>
+<script src="https://netfree.link/injection-script/popup-card-init.js" type="text/javascript" async  ></script>

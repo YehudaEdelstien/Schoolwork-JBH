@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Array</title>
+</head>
+<body>
+    <script>
+        function threeRandomNumbers() {
+            const arr = []
+            const range = 10;
+            const arrayLength = 3;
+            const minValue = 1;
+
+            for (let i = 0; i < arrayLength; i++) {
+                arr.push(Math.floor(Math.random() * range + minValue));
+            }
+            return arr;
+        }
+
+        console.log(threeRandomNumbers());
+    </script>
+</body>
+</html>

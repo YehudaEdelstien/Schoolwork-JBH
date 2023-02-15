@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days to Years</title>
+</head>
+<body>
+    <h3>Assuming there are 30 days to a month and 12 month to a year:</h3>
+    <p>Days: <input id="days" type="number" value="0"> <Button type="button" onclick="calculateYear()">Calculate</Button></p>
+
+    <p id="result">0 days, 0 months, 0 years</p>
+
+    <script>
+
+        // קטע קוד זה רץ כאשר המשתמש לוחץ על הכפתור שבדף
+        function calculateYear () {
+            const DaysPerMonth = 30     // הגדר כמות ימים בחודש
+            const MonthsPerYear = 12    // הגדר כמות חודשים בשנה
+            
+            let x = document.getElementById("days").valueAsNumber;  // קלוט את ערך הימים שהמשתמש הזין
+
+            let days = Math.floor(x % DaysPerMonth);    // מצא את כמות הימים על ידי שארית ועיגול כלפי מטה
+            let months = Math.floor(x / DaysPerMonth % MonthsPerYear);      // מצא את כמות החודשים על ידי חילוק ימים לתוך חודשים, מציאת שארית ועיגול כלפי מטה
+            let years = Math.floor(x / DaysPerMonth / MonthsPerYear);       // מצא את כמות השנים על ידי חילוק ימים לתוך חודשים וחודשים לתוך שנים ועיגול כלפי מטה
+
+            /* Mathematical
+            let days = x % DaysPerMonth;
+            let months = ((x - days) / DaysPerMonth) % MonthsPerYear;
+            let years = (x - days - (months * DaysPerMonth)) / (MonthsPerYear * DaysPerMonth);
+            */
+
+            document.getElementById("result").innerHTML = `${days} days, ${months} months, ${years} years`;     // הדפס את התשובה למשתמש 
+        }
+    </script>
+
+</body>
+</html>

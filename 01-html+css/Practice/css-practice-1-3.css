@@ -1,0 +1,36 @@
+body{
+    font-family: Arial, sans-serif;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    width: 120px;
+    padding: 15px 5px;
+}
+
+td {
+    border: 1px black solid;
+}
+
+th {
+    border: 2px black solid;
+}
+
+thead {
+    background-color: #d9ead2;
+}
+
+tbody tr:nth-child(2n){
+    background-color: #d9d9d9;
+}
+
+td:nth-child(3){
+    text-align: left;
+}
+
+tbody tr:hover {
+    background-color: yellow;
+}

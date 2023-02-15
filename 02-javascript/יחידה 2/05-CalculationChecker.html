@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Checker</title>
+</head>
+<body>
+    <span id="num-1"></span> + <span id="num-2"></span> = <input type="number" id="answer">
+    <br><br>
+    <Button onclick="checkEquation()">Check Equation</Button>
+    <h2 id="was-it-right"></h2>
+
+    <script>
+        let x = Number(prompt("First number:"));
+        let y = Number(prompt("Second number:"));
+
+        document.getElementById("num-1").innerHTML = x;
+        document.getElementById("num-2").innerHTML = y;
+        
+        function checkEquation () {     // פונקציה שרצה כשלוחצים על הכפתור
+            // קבל את התשובה של המשתמש
+            let product = document.getElementById("answer").valueAsNumber;
+
+            // בדוק אם המשוואה נכונה וייצר תשובה לפי התוצאה
+            let result = x + y == product ? "You are Correct!" : "Sorry, the answer is " + (x + y);
+            
+            document.getElementById("was-it-right").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even and Odd Digits</title>
+</head>
+
+<body>
+
+    <script>
+        let x = Number(prompt("Please input a whole number that is less than 100:"));
+
+        let oddNumbers = 0;
+        let evenNumbers = 0;
+
+        while (x > 0) {  // קטע קוד שחוזר על עצמו כל זמן שהתנאי מתקיים
+            x % 2 == 0 ? evenNumbers++ : oddNumbers++;  // ספור מספרים זוגיים ואי זוגיים
+            x /= 10;    // הקטן את המספר כדי לקבל את המספר הבא במקום של האחדים
+            x = Math.floor(x);  // עגל את המספר כדי שלא יהיה עשרוני
+        }
+
+        if (oddNumbers == 0 && evenNumbers == 0) { // אם לא היו מספרים זוגיים ואי זוגיים
+            alert("The number was not valid.");
+        }
+        else if (oddNumbers == 0){      // אם לא היו מספרים אי-זוגיים
+            alert("This number includes even digits only");
+        }
+        else if (evenNumbers == 0){     // אם לא היו מספרים זוגיים
+            alert("This number includes odd digits only");
+        } 
+        else {                          // אם היו את שני סוגי המספרים
+            alert("Mixed number. This number contains both even and odd digits.");
+        }
+
+    </script>
+
+</body>
+
+</html>

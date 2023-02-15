@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days per Month</title>
+</head>
+<body>
+    <h1>Check days of a month:</h1>
+
+    Month:<input type="number" id="month" value="1" min="1" max="12"> Year:<input type="number" id="year" value="1970" min="0"> 
+    <br><br>
+    <button type="button" onclick="calculateDaysForMonth()">Check Days</button>
+    <h2 id="days"></h2>
+
+    <script>
+        function calculateDaysForMonth () {     // פונקציה שרצה כשלוחצים על הכפתור שבדף
+            let month = document.getElementById("month").valueAsNumber;     // קבל ערך משדה כמספר, לא מחרוזת 
+            let year = document.getElementById("year").valueAsNumber;       // קבל ערך משדה כמספר
+
+            switch (month) {  // בדוק אם המשתנה בסוגריים שווה לערך של אחד מהמקרים הבאים
+
+                case 1:     // במקרה שהחודש שווה ל-1
+                case 3:     // או ל-3
+                case 5:     // או ל-5
+                case 7:     // או ל-7
+                case 8:     // או ל-8
+                case 10:    // או ל-10
+                case 12:    // או ל-12
+                    document.getElementById("days").innerHTML = '31 days';  // יש 31 יום
+                    break;  // עד כאן לבצע במקרים הנ"ל
+                    
+                case 4:     // במקרה שהחודש שווה ל-4
+                case 6:     // או ל-6
+                case 9:     // או ל-9
+                case 11:    // או ל-11
+                    document.getElementById("days").innerHTML = '30 days';  // יש 30 יום
+                    break;  // עד כאן לבצע במקרים הנ"ל
+
+                case 2:     // במקרה שהחודש שווה ל-2
+                    if (year % 4 == 0) {    // אם מדובר בשנה רביעית
+                        if (year % 100 == 0 && year % 400 != 0) { // אם מדובר בשנה מאה ולא מדובר בשנה 400
+                            document.getElementById("days").innerHTML = '28 days';  // יש 28 יום
+                        } else {    // אחרת
+                            document.getElementById("days").innerHTML = '29 days';  // יש 29 יום
+                        }
+                    }
+                    else {                  // אם לא מדובר בשנה רביעית
+                        document.getElementById("days").innerHTML = '28 days';      // יש 28 יום
+                    }
+                    break;  // עד כאן לבצע במקרה הנ"ל
+            }
+        }
+    </script>
+</body>
+</html>

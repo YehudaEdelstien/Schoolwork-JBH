@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+</head>
+
+<body>
+
+    <img src="https://storage.googleapis.com/gweb-uniblog-publish-prod/original_images/tenor_1.gif" alt="nice">
+
+    <script>
+        let name = "moshe";
+        let password = "123";
+
+        askForName();   // תריץ פונקציה שהוגדרה מראש שני שורות למטה
+
+        function askForName() {
+            // בדוק שני דברים: בקש ערך ובדוק שהוא תואם לשם, ואם כן, בדוק גם קלט שני מול הסיסמה
+            if (prompt("Input name. hint: 'moshe'") == name && prompt("Input password. hint: '123'") == password) {
+                alert("Nicley done!");  // אם הכל כשורה, שלח הודעה שהכל כשורה
+            } else {    // אחרת
+                alert("Incorrect input detected! Try again.");  // שלח הודעה שצריך לנסות שוב
+                askForName();   // התחל שוב מתחילת הפונקציה
+            }
+        }
+    </script>
+</body>
+
+</html>

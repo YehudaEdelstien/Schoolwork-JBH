@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        const appElement = document.getElementById("app");
+
+        const buttonAmount = prompt("How many Buttons?");
+
+        for(let i = 0; i < buttonAmount; i++){
+            const button = document.createElement("button");
+            button.id = `button${i + 1}`;
+            button.innerHTML = `Button ${i + 1}`;
+            appElement.appendChild(button);
+        }
+        
+        appElement.addEventListener('click', buttonAlertEvent)
+
+        function buttonAlertEvent(e){
+            alert(e.target.id)
+        }
+    </script>
+</body>
+</html>

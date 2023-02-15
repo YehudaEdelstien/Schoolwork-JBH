@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Averages</title>
+</head>
+<body>
+    
+    <h1>Averages calculator</h1>
+
+    A:<input type="number" id="field-1" oninput="calculateAverages()" value="0">
+    B:<input type="number" id="field-2" oninput="calculateAverages()" value="0">
+    <span id="average-1">Average: 0</span><br>
+
+    C:<input type="number" id="field-3" oninput="calculateAverages()" value="0">
+    D:<input type="number" id="field-4" oninput="calculateAverages()" value="0">
+    <span id="average-2">Average: 0</span><br>
+
+    E:<input type="number" id="field-5" oninput="calculateAverages()" value="0">
+    F:<input type="number" id="field-6" oninput="calculateAverages()" value="0">
+    <span id="average-3">Average: 0</span><br>
+
+    <h2 id="total-average">Total Average: 0</h2>
+
+
+    <script>
+
+        // קטע קוד זה רץ בכל פעם שהמשתמש משנה מספר בקלט של הדף. הפקודה קיימת בכל קלט בפני עצמו
+        function calculateAverages () {
+            values = getValues();   // תריץ קטע קוד שהוגדר למטה כדי לקבל את המספרים שהמשתמש הזין כמערך (סט של ערכים)
+
+            let average1 = (values[0] + values[1]) / 2;     // מצא את הממוצע של שני מספרים מתוך מערך ושמור אותו במשתנה
+            let average2 = (values[2] + values[3]) / 2;     // מצא את הממוצע של שני מספרים מתוך מערך ושמור אותו במשתנה
+            let average3 = (values[4] + values[5]) / 2;     // מצא את הממוצע של שני מספרים מתוך מערך ושמור אותו במשתנה
+
+            let totalAverage = (average1 + average2 + average3) / 3;    // מצא ממוצע של הכל ושמור אותו במשתנה
+
+            document.getElementById("average-1").innerHTML = "Average: " + average1;    // פלוט את הממצועים למשתמש
+            document.getElementById("average-2").innerHTML = "Average: " + average2;    // פלוט את הממצועים למשתמש
+            document.getElementById("average-3").innerHTML = "Average: " + average3;    // פלוט את הממצועים למשתמש
+
+            document.getElementById("total-average").innerHTML = "Total Average: " + totalAverage;      // פלוט את הממוצע הכולל למשתמש
+        }
+
+        // פונקציה זו נקראת לרוץ מתוך הקטע קוד הקודם
+        function getValues () {
+            let a = document.getElementById("field-1").valueAsNumber; // קבל ערך מהמסמך
+            let b = document.getElementById("field-2").valueAsNumber; // קבל ערך מהמסמך
+            let c = document.getElementById("field-3").valueAsNumber; // קבל ערך מהמסמך
+            let d = document.getElementById("field-4").valueAsNumber; // קבל ערך מהמסמך
+            let e = document.getElementById("field-5").valueAsNumber; // קבל ערך מהמסמך
+            let f = document.getElementById("field-6").valueAsNumber; // קבל ערך מהמסמך
+            let valueArray = [a, b, c, d, e, f];    // שמור את המספרים בתוך מערך (סט של ערכים)
+            return (valueArray);    // תן את הערך שבתוך הסוגריים למי שביקש להריץ את הפונציה
+        }
+
+    </script>
+
+</body>
+</html>

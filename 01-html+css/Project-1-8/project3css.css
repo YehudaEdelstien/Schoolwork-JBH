@@ -1,0 +1,265 @@
+* {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+html{
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #9dd7f1;
+    color: #1a5482;
+    padding: 10px;
+}
+
+header h1, h2{
+    padding-right: 10%;
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+nav {
+    position: fixed;
+    background-color: #00638b;
+}
+
+main {
+    background-color: white;
+    width: 80vw;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+audio {
+    width: 50px;
+    margin: auto;
+    display: block;
+}
+
+main::before {
+    content: "";
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/c/cc/%D7%96%D7%90%D7%9C_%D7%99%D7%A9%D7%99%D7%91%D7%AA_%D7%AA%D7%95%D7%A8%D7%AA_%D7%90%D7%9E%D7%AA_1.jpg);
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 40px auto;
+    font-size: 30px;
+}
+
+caption {
+    font-family: arial;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #93ddf8;
+    height: 30px;
+    width: 200px;
+    margin: auto;
+    border-top-left-radius: 20px;    
+    border-top-right-radius: 20px;
+    border: 2px solid #1a5482;
+    border-bottom-width: 0;
+}
+
+th {
+    background-color: #009ad8;
+
+}
+
+td {
+    background-color: #93ddf8;
+}
+
+th,
+td {
+    border: 2px solid #1a5482;
+    padding: 7px;
+}
+
+ul a {
+    color: white;
+    text-decoration: none;
+}
+
+/* form stuff */
+
+form {
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    
+}
+form h2{
+    text-align: center;
+    margin-top: 1.5em;
+    color: #00638b;
+}
+
+fieldset{
+    border: 3.5px solid #00638b;
+    padding: 5%;
+}
+
+fieldset > div {
+    display: flex;
+    width: 100%;
+}
+
+fieldset > div div {
+    flex-grow: 1;
+    margin: 10px;
+}
+
+label {
+    display: inline-block;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"]  {
+    width: 100%;
+    height: 20px;
+}
+
+.flex-grow-3 {
+    flex-grow: 5;
+}
+
+input[type="submit"] {
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    height: 2em;
+    font-size: 1.1rem;
+    background-color: #00638b;
+    color: white;
+    min-width: 300px;
+  }
+/* end of form stuff*/
+
+footer {
+    background-color: #00638b;
+    color: white;
+    text-align: center;
+    line-height: 28px;
+    padding: 15px;
+}
+
+footer a {
+    color: rgb(190, 190, 190);
+    
+}
+
+.header-line {
+    width: 100%;
+    height: 10px;
+    background-color: #009ad8;
+}
+
+.section-desc {
+    text-align: center;
+    font-size: 30px;
+    margin: 60px;
+    line-height: 50px;
+
+}
+
+
+.link-button {
+    width: 10vw;
+    max-width: 100px;
+    min-width: 60px;
+    box-sizing: border-box;
+    list-style-type: none;
+    background-color: #00638b;
+    margin: 20px 0;
+    padding: 10px 5px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.link-button:hover {
+    background-color: #3cbeec;
+    color: #00638b;
+}
+
+.ending{
+    height: 175px;
+}
+
+#logo {
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    z-index: 1;
+    max-width: 260px;
+    width: 30%;
+}
+
+#nav-links {
+    padding: 0;
+}
+
+#description,
+#participants {
+    scroll-margin-top: 5em;
+}
+
+
+#pictures {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 80px;
+    scroll-margin-top: 7em;
+
+}
+#pictures *{
+    border-radius: 10%;
+    height: 200px;
+    margin: 5px;
+
+}
+#pictures img {
+    border: 10px solid #00638b;
+}
+#pictures video{
+    border: 10px solid #009ad8;
+
+}
+
+
+#empty{
+    height: 100px;
+}
+
+@media only screen and (max-width: 768px) {
+    table,
+    caption
+    {
+        font-size: small;
+    }
+
+    .section-desc{
+        font-size: 18px;
+    }
+
+    #participants {
+        scroll-margin-top: 7em;
+    }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boxes</title>
+
+    <style>
+        #box-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 200px;
+            height: 300px;
+            margin: 2px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 2px gray solid;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>Remaining: <span id="counter">100</span></h2>
+    <h2>Removed: <span id="title">None Yet!</span></h2>
+    <div id="box-container"></div>
+    
+    <script>
+        const container = document.getElementById("box-container");
+        const counter = document.getElementById("counter");
+        const title = document.getElementById("title");
+
+        const boxes = []
+        let boxCount = 45;
+        for (let i = 1; i <= boxCount; i++) {
+            boxes.push({title: "Element " + i, color: randomColor()});
+        }
+        counter.innerHTML = boxCount;
+
+        boxes.forEach(element => {
+            const box = document.createElement("div");
+            box.classList.add("box");
+            box.innerHTML = `<p class="title">${element.title}</p>`;
+            box.style.backgroundColor = element.color;
+
+            btn = document.createElement("button");
+            btn.classList.add("btn");
+            btn.innerHTML = "click here"
+            box.appendChild(btn);
+
+            container.appendChild(box);
+        });
+
+        function randomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        container.addEventListener("click", function({target}){
+            if (target.classList.contains("btn")){
+                const box = target.closest(".box");
+                title.innerHTML = box.querySelector(".title").innerHTML;
+                box.remove();
+                boxCount--;
+                console.log(boxCount)
+                counter.innerHTML = boxCount;
+            }
+        })
+    </script>
+</body>
+</html>

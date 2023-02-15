@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+</head>
+<body>
+
+    <button onclick="diceAlert()">Dice Alert!</button>
+
+    <script>
+
+        function numberReverser(num) {
+            num = parseInt(num);
+            if (num < 100 || num >= 1000){
+                return 0;
+            }
+
+            let reverseNum = 0;
+
+            reverseNum = num % 10;
+            num = Math.floor(num / 10);
+            reverseNum = reverseNum * 10 + num % 10;
+            num = Math.floor(num / 10);
+            reverseNum = reverseNum * 10 + num % 10;
+
+            return reverseNum;
+        }
+
+        function stringReverser(str) {
+            const num = parseInt(str);
+            if (num < 100 || num >= 1000){
+                return 0;
+            }
+
+            str = str.toString();
+
+            str = str.split("");
+            str = str.reverse();
+            str = str.join("");
+
+            return str;
+        }
+        
+        function getTwoDice() {
+            const die1 = Math.floor(Math.random() * 6 + 1);
+            const die2 = Math.floor(Math.random() * 6 + 1);
+            return [die1, die2];
+        }
+
+        function diceAlert() {
+            const dice = getTwoDice();
+            alert(dice[0] + " , " + dice[1]);
+        }
+
+        function getDiceSum() {
+            const dice = getTwoDice();
+            return (dice[0] + dice[1]);
+        }
+
+        function diceGame(player1, player2 = "Computer") {
+            const p1Score = getDiceSum();
+            const p2Score = getDiceSum();
+
+            if (p1Score > p2Score){
+                return player1 + " wins!";
+            } else if (p2Score > p1Score) {
+                return player2 + " wins!"
+            } else {
+                return "Tied!";
+            }
+        }
+
+        const randNum = Math.floor(Math.random() * 1100 + 1);
+
+        console.log(`numberReverser(${randNum}) returned: ${numberReverser(randNum)}`);
+        console.log(`stringReverser(${randNum}) returned: ${stringReverser(randNum)}`);
+        console.log("diceAlert() will alert through button");
+        console.log("getDiceSum() returns: " + getDiceSum());
+        console.log("diceGame('Reuven', 'Shimon') returned: " + diceGame('Reuven', 'Shimon'));
+        console.log("diceGame('Reuven') returned: " + diceGame('Reuven'));
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check String Length</title>
+</head>
+<body>
+    <script>
+        function checkStringLengths(arr) {
+            if (arr.length != 3) {
+                return 0; //"Invalid Input: Array is not 3 elements long"
+            }
+
+            for (const prop of arr){
+                if (typeof(prop) != 'string'){
+                    return 0;//"Invalid input: All elements must be strings";
+                }
+
+                if (prop.length != 3) {
+                    return 0;
+                }
+            }
+
+            return 1;
+        }
+
+        /*tests
+        console.log(checkStringLengths(["abc", "efg", "hij"]));
+        console.log(checkStringLengths(["abc", "efg", "hij", "jkl"]));
+        console.log(checkStringLengths(["abc", "efg"]));
+        console.log(checkStringLengths([123, 456, 789]));//*/
+    </script>
+</body>
+</html>
