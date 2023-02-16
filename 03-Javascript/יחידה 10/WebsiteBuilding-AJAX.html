@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Building: AJAX</title>
+
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1 id="jokeField">Click the button for a Joke!</h1>
+        <button id="btn">😂😂😂</button>
+        <div id="options">
+            <label for="xml">Xml:<input type="radio" name="getType" id="xml" value="xml" checked></label>
+            <label for="fetch">Fetch:<input type="radio" name="getType" id="fetch" value="fetch"></label>
+        </div>
+    </main>
+
+    <script>
+        const jokeField = document.getElementById("jokeField");
+        const jokeButton = document.getElementById("btn");
+
+        const url = "https://icanhazdadjoke.com/slack";
+
+        jokeButton.addEventListener('click', function () {
+            if (document.querySelector("#xml").checked) {
+                getJokeWithXMLrequest();
+            } else {
+                getJokeWithFetch();
+            }
+        })
+
+        function getJokeWithXMLrequest() {
+            const req = new XMLHttpRequest();
+            req.open("GET", url);
+            req.onload = function () {
+                const jokeItem = JSON.parse(req.responseText);
+                const jokeText = jokeItem.attachments[0].text;
+                renderJoke(jokeText);
+            }
+            req.send();
+        }
+
+        function getJokeWithFetch() {
+            fetch(url)
+                .then(response => response.json())
+                .then(jokeItem => {
+                    const jokeText = jokeItem.attachments[0].text;
+                    renderJoke(jokeText);
+                })
+        }
+
+        function renderJoke(joke) {
+            jokeField.innerHTML = joke;
+        }
+    </script>
+</body>
+
+</html>
