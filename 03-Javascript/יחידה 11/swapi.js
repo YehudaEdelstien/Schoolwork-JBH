@@ -5,6 +5,7 @@ const lukeSrc = "people/1/";
 const filmsSrc = "films"
 
 async function displayResource(target, printerFunc) {
+    outputElement.innerHTML = "Loading...";
     let resource = await fetch(baseUrl + target).then(resource => resource.json())
     printerFunc(resource);
 }
