@@ -1,0 +1,18 @@
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: yellow;
+    margin: 10px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.container {
+    border: 1px solid black;
+    width: 120px;
+    height: 150px;
+    padding: 5px;
+    margin: 20px;
+}
