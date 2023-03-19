@@ -1,3 +1,3 @@
-{Char: main}
+{"Char": "main"}
 Hello there!
 How are you doing?
