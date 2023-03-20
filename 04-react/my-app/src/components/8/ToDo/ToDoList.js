@@ -1,13 +1,8 @@
-import React, { Children, Component } from 'react';
+import React, {Component } from 'react';
 
 class ToDoItem extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {text: props.text}
-    }
-
     render() {
-        const {text} = this.state
+        const {text} = this.props
         return (
             <div>{ text }</div>
         );
