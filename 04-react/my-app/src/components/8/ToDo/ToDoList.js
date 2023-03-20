@@ -2,9 +2,13 @@ import React, {Component } from 'react';
 
 class ToDoItem extends Component {
     render() {
-        const {text} = this.props
+        let {text} = this.props
+
         return (
-            <div>{ text }</div>
+            <div>
+                { text } <br/>
+                <button>✔️</button>
+            </div>
         );
     }
 }
@@ -17,18 +21,41 @@ class ToDoList extends Component {
         const item = {
             text: prompt("What is the task?"),
             id: this.counter,
+            isDone: false,
         }
+
         this.counter++
 
-        const itemArr = [...this.state.toDoItems, item]
-        this.setState({ toDoItems: itemArr })
+        this.setState((prevState) => {
+            return {
+                toDoItems: [...prevState.toDoItems, item]
+            }
+        })
+    }
+
+    setIsDone = (index) => {
+        const item = this.getItem(index);
+        item.isDone = !item.isDone;
+    }
+
+    getItem = (index) => {
+        const itemArr = [...this.state.toDoItems]
+        return {...itemArr[index]}
+    }
+
+    setItem = (item, index) => {
+        const itemArr = [...this.state.toDoItems]
+        itemArr[index] = item;
+        this.setState(itemArr)
     }
 
     render() {
         return (
             <div>
                 <button onClick={this.addItem}>Add</button>
-                {this.state.toDoItems.map(item => <ToDoItem key={item.id} text={item.text}/>)}
+                <ul>
+                {this.state.toDoItems.map((item, index) => <li><ToDoItem key={item.id} index={index} text={item.text} isDone={item.isDone} setIsDone={this.setIsDone}/></li>)}
+                </ul>
             </div>
         );
     }
