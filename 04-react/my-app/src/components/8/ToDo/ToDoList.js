@@ -2,12 +2,13 @@ import React, {Component } from 'react';
 
 class ToDoItem extends Component {
     render() {
-        let {text} = this.props
+        let {index, text, isDone, setValue} = this.props
 
         return (
             <div>
                 { text } <br/>
-                <button>✔️</button>
+                <button onClick={() => setValue(index, "isDone")}>✔️</button>
+                {isDone && "DONE!"}
             </div>
         );
     }
@@ -33,9 +34,10 @@ class ToDoList extends Component {
         })
     }
 
-    setIsDone = (index) => {
+    setValue = (index, value) => {
         const item = this.getItem(index);
-        item.isDone = !item.isDone;
+        item[value] = !item[value];
+        this.setItem(item, index)
     }
 
     getItem = (index) => {
@@ -53,9 +55,15 @@ class ToDoList extends Component {
         return (
             <div>
                 <button onClick={this.addItem}>Add</button>
-                <ul>
-                {this.state.toDoItems.map((item, index) => <li><ToDoItem key={item.id} index={index} text={item.text} isDone={item.isDone} setIsDone={this.setIsDone}/></li>)}
-                </ul>
+                
+                {this.state.toDoItems.map((item, index) => {
+                    return <ToDoItem 
+                        key={item.id} 
+                        index={index} 
+                        text={item.text} 
+                        isDone={item.isDone} 
+                        setValue={this.setValue}/>
+                    })}
             </div>
         );
     }
