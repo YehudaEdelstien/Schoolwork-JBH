@@ -1,16 +1,31 @@
+.App {
+    display: grid;
+    grid-template-columns: 100px 500px;
+    grid-template-rows: 300px 1fr;
+    justify-content: center;
+}
 
 .key {
     width: 30px;
     height: 30px
-  }
-  
-  .keyRow{
-    width: 350px;
+}
+
+.keyRow {
     display: flex;
     justify-content: space-around;
     margin: 10px 0;
-  }
-  
-  #keyboard {
+}
+
+#optionsBar {
+    display: flex;
+    flex-direction: column;
+}
+
+#inputArea {
+    border: 1px solid black;
+}
+
+#keyboard {
     width: 200px;
-  }
+    grid-column: 2 / 3;
+}

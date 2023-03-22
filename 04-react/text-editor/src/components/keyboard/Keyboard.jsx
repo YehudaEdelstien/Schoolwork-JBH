@@ -1,11 +1,11 @@
-import keys from "./Keys.js";
+import keys from "./Keys";
 
 function Key(props) {
     return <button className="key">{props.letter}</button>
 }
 
 function KeyRow(props) {
-    return <div className="keyRow">{props.keys.map(key => <Key letter={key}/>)}</div>
+    return <div className="keyRow">{props.keys.map(key => <Key key={key} letter={key}/>)}</div>
 }
 
 function Keyboard () {
