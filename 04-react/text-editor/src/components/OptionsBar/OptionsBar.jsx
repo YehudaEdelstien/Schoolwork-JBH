@@ -4,13 +4,13 @@ import LanguageOptions from "./LanguageOptions/LanguageOptions"
 import MiscOptions from "./MiscOptions/MiscOptions"
 
 function OptionsBar(props) {
-    const {changeSetting, language, textSize, color} = props
+    const {changeSetting, language, textSize, color, changeCase, clearAll} = props
     return (
     <div id="optionsBar">
         <SizeOptions changeSetting={changeSetting} textSize={textSize}/>
         <ColorOptions changeSetting={changeSetting} color={color}/>
         <LanguageOptions changeSetting={changeSetting} language={language}/>
-        <MiscOptions />
+        <MiscOptions changeCase={changeCase} clearAll={clearAll}/>
     </div>
     )
 }
