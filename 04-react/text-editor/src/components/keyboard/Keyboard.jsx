@@ -9,9 +9,10 @@ function KeyRow(props) {
 }
 
 function BottomKeyRow(props) {
+    const dot = props.caps ? "🔴 " : "⚪ ";
     return (
     <div className="keyRow">
-        <button onClick={() => props.changeSetting("caps", !props.caps)}>CAPS LOCK</button>
+        <button onClick={() => props.changeSetting("caps", !props.caps)}>{dot}CAPS LOCK</button>
         <button onClick={() => props.addLetter("\u00A0")} style={{width:"150px"}}>Space</button>
         <button onClick={props.undoLast}>Undo</button>
         <button onClick={props.removeLetter}>⌫</button>
