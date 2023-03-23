@@ -28,6 +28,8 @@
 
 .optionsSection button {
     flex-grow: 1;
+    min-height: 1.5rem;
+    min-width: 2rem;
 }
 
 #optionsBar {

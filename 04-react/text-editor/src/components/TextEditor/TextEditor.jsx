@@ -60,10 +60,15 @@ class TextEditor extends Component {
     }
 
     render() {
-        const {textObjects, language, caps} = this.state;
+        const {textObjects, language, textSize, color, caps,} = this.state;
         return (
             <div className='textEditor'>
-                <OptionsBar changeSetting={this.changeSetting}/>
+                <OptionsBar 
+                    changeSetting={this.changeSetting}
+                    color={color}
+                    textSize={textSize}
+                    language={language}
+                />
                 <InputArea textObjects={textObjects}/>
                 <Keyboard 
                     language={language} 
