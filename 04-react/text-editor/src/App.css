@@ -1,8 +1,9 @@
-.App {
+.textEditor {
+    height: 100vh;
     display: grid;
     grid-template-columns: 100px 500px;
-    grid-template-rows: 300px 1fr;
-    justify-content: center;
+    grid-template-rows: 350px 1fr;
+    place-content: center;
 }
 
 .key {
@@ -12,13 +13,27 @@
 
 .keyRow {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 5px;
     margin: 10px 0;
+}
+
+.optionsSection {
+    padding: 10px 0;
+    display: flex;
+    justify-content: stretch;
+    flex-wrap: wrap;
+    border-bottom: 1px solid black;
+}
+
+.optionsSection button {
+    flex-grow: 1;
 }
 
 #optionsBar {
     display: flex;
     flex-direction: column;
+    padding: 10%;
 }
 
 #inputArea {
@@ -26,6 +41,5 @@
 }
 
 #keyboard {
-    width: 200px;
     grid-column: 2 / 3;
 }
