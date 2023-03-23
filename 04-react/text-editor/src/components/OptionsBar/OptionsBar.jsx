@@ -9,7 +9,7 @@ function OptionsBar(props) {
     <div id="optionsBar">
         <SizeOptions changeSetting={changeSetting} textSize={textSize}/>
         <ColorOptions changeSetting={changeSetting} color={color}/>
-        <LanguageOptions changeSetting={changeSetting}/>
+        <LanguageOptions changeSetting={changeSetting} language={language}/>
         <MiscOptions />
     </div>
     )

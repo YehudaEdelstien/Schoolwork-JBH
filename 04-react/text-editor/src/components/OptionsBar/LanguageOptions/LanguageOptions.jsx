@@ -1,18 +1,23 @@
 function LanguageButton(props) {
+    const {language, localLanguage} = props;
+
+    const styleObj = {
+        border: localLanguage === language ? "2px solid green" : "revert",
+    };
+
     return (
         <>
-            <buttons></buttons>
+            <button onClick={() => props.changeSetting("language", localLanguage)} style={styleObj}>{localLanguage}</button>
         </>
     )
 }
 
 function LanguageOptions(props) {
-    const {changeSetting} = props
     return (
         <div className="optionsSection">
             <span>Language:</span>
-            <button>en</button>
-            <button>he</button>
+            <LanguageButton {...props} localLanguage={"en"}></LanguageButton>
+            <LanguageButton {...props} localLanguage={"he"}></LanguageButton>
         </div>
     )
 }
