@@ -11,22 +11,37 @@ function KeyRow(props) {
 function BottomKeyRow(props) {
     return (
     <div className="keyRow">
-        <button>CAPS LOCK</button>
-        <button>Undo</button>
-        <button>Space</button>
-        <button>⌫</button>
+        <button onClick={() => props.changeSetting("caps", !props.caps)}>CAPS LOCK</button>
+        <button onClick={() => props.addLetter("\u00A0")} style={{width:"150px"}}>Space</button>
+        <button onClick={props.undoLast}>Undo</button>
+        <button onClick={props.removeLetter}>⌫</button>
     </div>
     )
 }
 
 function Keyboard (props) {
-    const keys = keyboardKeys.english;
+    const keys = (() => {
+        if(props.caps === true) {
+            const arr = keyboardKeys.en.map(letterArr => {
+                return letterArr.map(char => char.toUpperCase());
+            })
+            return arr;
+        } else {
+            return keyboardKeys[props.language]
+        }
+    })()
     return (
         <div id="keyboard" >
-            <KeyRow keys={keys[0]} onClick={props.onClick}/>
-            <KeyRow keys={keys[1]} onClick={props.onClick}/>
-            <KeyRow keys={keys[2]} onClick={props.onClick}/>
-            <BottomKeyRow />
+            <KeyRow keys={keys[0]} onClick={props.addLetter}/>
+            <KeyRow keys={keys[1]} onClick={props.addLetter}/>
+            <KeyRow keys={keys[2]} onClick={props.addLetter}/>
+            <BottomKeyRow 
+                changeSetting={props.changeSetting} 
+                caps={props.caps} 
+                addLetter={props.addLetter}
+                removeLetter={props.removeLetter}
+                undoLast={props.undoLast}
+            />
         </div>
     )
 }
