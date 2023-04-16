@@ -6,10 +6,7 @@ import AddPlayer from '../AddPlayer/AddPlayer';
 class GameContainer extends Component {
     state = {
         gameIsRunning: false,
-        players: [
-            { name: "Abe", number: "x", score: 0, prevScores: [] },
-            { name: "Ben", number: "x", score: 0, prevScores: [] }
-        ],
+        players: [],
     }
 
     addPlayer = (name) => {
@@ -20,7 +17,18 @@ class GameContainer extends Component {
         })
     }
 
+    removePlayer = (name) => {
+        this.setState(prevState => {
+            const playersArr = [...prevState.players];
+            const index = playersArr.findIndex(obj => obj.name === name);
+            playersArr.splice(index, 1);
+            return {players: playersArr};
+        })
+    }
+
     startGame = () => {
+        if (this.state.players.length < 1) return;
+        
         const startNum = this.getStartingNumber();
         const players = [...this.state.players]
         players.forEach(player => {
@@ -38,12 +46,10 @@ class GameContainer extends Component {
         return Math.floor(Math.random() * 100);
     }
 
-    changeNumber = (playerName, number) => {
-        if (this.state.gameIsRunning === false) return;
-
+    changeNumber = (name, number) => {
         this.setState(prevState => {
             const playersArr = [...prevState.players];
-            const index = playersArr.findIndex(obj => obj.name === playerName);
+            const index = playersArr.findIndex(obj => obj.name === name);
             const newObj = { ...playersArr[index] }
 
             newObj.number = Math.floor(number);
@@ -72,6 +78,7 @@ class GameContainer extends Component {
                             key={index}
                             playerObj={player}
                             gameIsRunning={gameIsRunning}
+                            removePlayer={this.removePlayer}
                             changeNumber={this.changeNumber}
                         />
                     })}
