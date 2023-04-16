@@ -1,5 +1,4 @@
 function PlayerButtons(props) {
-    console.log(props);
     const {changeNumber, name, number} = props
     return (
         <div>
