@@ -7,9 +7,22 @@
   justify-content: center;
 }
 
-.player {
-  border: 1px solid black;
+.player,
+.addPlayer {
+  width: 150px;
+  height: 150px;
   padding: 10px;
   margin: 10px;
 }
 
+.player {
+  border: 1px solid black;
+}
+
+.player input {
+  width: calc(100% - 10px);
+}
+
+.addPlayer {
+  font-size: 30px;
+}
