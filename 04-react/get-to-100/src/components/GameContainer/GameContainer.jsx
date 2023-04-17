@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 
 import PlayerContainer from '../PlayerContainer/PlayerContainer';
+import AddPlayer from '../AddPlayer/AddPlayer';
 
 class GameContainer extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        gameIsRunning: false,
+        players: [],
+    }
 
-        const startNum = this.getStartingNumber();
+    addPlayer = (name) => {
+        this.setState(prevState => {
+            const playersArr = [...prevState.players];
+            playersArr.push({name: name, number: "x", score: 0, prevScores: []})
+            return{players: playersArr};
+        })
+    }
 
-        this.state = {
-            gameIsRunning: true,
-            players: [
-                { name: "Abe", number: startNum, score: 0, prevScores: []},
-                { name: "Ben", number: startNum, score: 0, prevScores: []}
-            ],
-        }
+    removePlayer = (name) => {
+        this.setState(prevState => {
+            const playersArr = [...prevState.players];
+            const index = playersArr.findIndex(obj => obj.name === name);
+            playersArr.splice(index, 1);
+            return {players: playersArr};
+        })
     }
 
     startGame = () => {
+        if (this.state.players.length < 1) return;
+        
         const startNum = this.getStartingNumber();
         const players = [...this.state.players]
         players.forEach(player => {
@@ -35,13 +46,11 @@ class GameContainer extends Component {
         return Math.floor(Math.random() * 100);
     }
 
-    changeNumber = (playerName, number) => {
-        if (this.state.gameIsRunning === false) return;
-
+    changeNumber = (name, number) => {
         this.setState(prevState => {
             const playersArr = [...prevState.players];
-            const index = playersArr.findIndex(obj => obj.name === playerName);
-            const newObj = {...playersArr[index]}
+            const index = playersArr.findIndex(obj => obj.name === name);
+            const newObj = { ...playersArr[index] }
 
             newObj.number = Math.floor(number);
             newObj.score = newObj.score + 1;
@@ -51,28 +60,34 @@ class GameContainer extends Component {
             }
 
             playersArr[index] = newObj;
-            return {players: playersArr};
+            return { players: playersArr };
         })
 
         if (number === 100) {
-            this.setState({gameIsRunning: false});
+            this.setState({ gameIsRunning: false });
         }
     }
 
     render() {
-        const {players, gameIsRunning} = this.state
+        const { players, gameIsRunning } = this.state
         return (
             <>
                 <div className="gameContainer">
-                {players.map(player => {
-                    return <PlayerContainer
-                        key={player.name}
-                        playerObj={player}
-                        changeNumber={this.changeNumber}
-                    />
-                })}
+                    {players.map((player, index) => {
+                        return <PlayerContainer
+                            key={index}
+                            playerObj={player}
+                            gameIsRunning={gameIsRunning}
+                            removePlayer={this.removePlayer}
+                            changeNumber={this.changeNumber}
+                        />
+                    })}
+                    {!gameIsRunning && <AddPlayer 
+                        players={players}
+                        addPlayer={this.addPlayer}
+                    />}
                 </div>
-                {!gameIsRunning && <button onClick={this.startGame}>restart!</button>}
+                {!gameIsRunning && <button onClick={this.startGame}>Start new game!</button>}
             </>
         )
     }
