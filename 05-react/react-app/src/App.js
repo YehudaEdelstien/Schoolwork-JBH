@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/4/Clocks-app'
+import {default as Component} from './Components/3/FavoriteColor/FavoriteColor'
 function App() {
   return (
     <div>
