@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/3/FavoriteColor/FavoriteColor'
+import {default as Component} from './Components/5/SchoolApp'
 function App() {
   return (
     <div>
