@@ -8,11 +8,11 @@ class SchoolForm extends Component {
             email: "",
         }
     }
-    
+
     inputFieldData = {
-        firstName: { labelText: "First name", type: "text", defaultValue: "",},
-        lastName: { labelText: "Last name", type: "text", defaultValue: "",},
-        email: { labelText: "Email", type: "text", defaultValue: "",},
+        firstName: { labelText: "First name", type: "text", defaultValue: "", },
+        lastName: { labelText: "Last name", type: "text", defaultValue: "", },
+        email: { labelText: "Email", type: "email", defaultValue: "", },
     }
 
     updateValue = ({ target }) => {
@@ -36,41 +36,27 @@ class SchoolForm extends Component {
     }
 
     getInputfield = (key, value, type) => {
-        switch (type) {
-            case "text":
-                return (
-                    <TextField
-                        key={key}
-                        name={key}
-                        value={value}
-                        labelText={this.inputFieldData[key].labelText}
-                        updateValue={this.updateValue}
-                    />
-                )
-            case "radio":
-                return (
-                    <RadioField
-                        key={key}
-                        name={key}
-                        value={value}
-                        labelText={this.inputFieldData[key].labelText}
-                        options={this.inputFieldData[key].options}
-                        updateValue={this.updateValue}
-                    />
-                )
-            default:
-                return (<div></div>)
-        }
+        return (
+            <TextField
+                key={key}
+                type={type}
+                name={key}
+                value={value}
+                labelText={this.inputFieldData[key].labelText}
+                updateValue={this.updateValue}
+            />
+        )
     }
+
 
     addNewStudent = (e) => {
         e.preventDefault();
         this.props.addStudent(this.state.studentData);
-        const newStudentData = {...this.state.studentData};
+        const newStudentData = { ...this.state.studentData };
         for (const key in newStudentData) {
             newStudentData[key] = this.inputFieldData[key].defaultValue;
         }
-        this.setState({studentData: newStudentData});
+        this.setState({ studentData: newStudentData });
     }
 
     render() {
@@ -81,60 +67,30 @@ class SchoolForm extends Component {
                 <button>Submit</button>
             </form>
         );
+
     }
 }
 
 class TextField extends Component {
     render() {
-        let { name, value, labelText, updateValue, } = this.props
+        let { type, name, value, labelText, updateValue, } = this.props
 
         return (
             <>
                 <label style={{ display: "block" }} htmlFor={name}>
-                    <h3>{labelText}</h3>
+                    {labelText}
                 </label>
                 <input
+                    type={type}
                     id={name}
                     name={name}
                     value={value}
                     onChange={(e) => updateValue(e)}
                     required
                 ></input>
-                <div style={{fontWeight: "700"}}>current {labelText} is {value}</div>
+                <p style={{ fontWeight: "700" }}>current {labelText} is {value}</p>
             </>
         )
     }
 }
-
-class RadioField extends Component {
-    render() {
-        const { name, value, labelText, updateValue, options } = this.props
-
-        console.log()
-
-        return (
-            <>
-                <h3>{name}</h3>
-                {options.map((opt) => {
-                    return (
-                        <label style={{ display: "block" }} htmlFor={opt} key={opt}>
-                            <input
-                                type='radio'
-                                id={opt}
-                                name={name}
-                                value={opt}
-                                checked={opt === value ? true : false}
-                                onChange={(e) => updateValue(e)}
-                                required
-                            ></input>
-                            {opt}
-                        </label>
-                    )
-                })}
-                <div style={{fontWeight: "800"}}>current {labelText} is {value}</div>
-            </>
-        )
-    }
-}
-
 export default SchoolForm;

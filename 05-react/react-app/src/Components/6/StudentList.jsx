@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-
 function StudentList(props) {
     let { students } = props;
-    console.log(students[0].firstName)
     students = students.sort((a, b) => a.firstName.localeCompare(b.firstName));
 
     const tableColumnNames = ["firstName", "lastName", "email",]
@@ -18,7 +15,7 @@ function StudentList(props) {
                 </thead>
 
                 <tbody>
-                    {students.map((student, index) => {
+                    {students.map((student) => {
                         const { firstName, lastName, email, } = student
                         const studentDataArr = [firstName, lastName, email,]
                         return (

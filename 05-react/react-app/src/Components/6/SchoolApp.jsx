@@ -5,11 +5,7 @@ import SchoolForm from './SchoolForm';
 
 class SchoolApp extends Component {
     state = {
-        students: [{
-            firstName: "Rad",
-            lastName: "Dude",
-            email: "fr@gmail.com",
-        }]
+        students: []
     }
 
     addStudent = (studentObj) => {
