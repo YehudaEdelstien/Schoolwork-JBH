@@ -5,23 +5,20 @@ import SchoolForm from './SchoolForm';
 
 class SchoolApp extends Component {
     state = {
-        students: []
+        addingStudent: false
     }
 
-    addStudent = (studentObj) => {
-        console.log(studentObj)
-        this.setState(prevState => {
-            const studentArr = [...prevState.students]
-            studentArr.push(studentObj);
-            return { students: studentArr };
-        })
+    toggleAddStudent = () => {
+        this.setState({addingStudent: !this.state.addingStudent})
     }
 
     render() {
         return (
             <>
-                <StudentList students={this.state.students} />
-                <SchoolForm addStudent={this.addStudent} />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/yegor256/tacit@gh-pages/tacit-css-1.5.5.min.css" />
+
+                {!this.state.addingStudent && <StudentList students={this.state.students} toggleAddStudent={this.toggleAddStudent}/>}
+                {this.state.addingStudent && <SchoolForm addStudent={this.addStudent} toggleAddStudent={this.toggleAddStudent}/>}
             </>
         );
     }

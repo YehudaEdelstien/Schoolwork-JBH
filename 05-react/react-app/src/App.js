@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/6/SchoolApp'
+import {default as Component} from './Components/7/Copy'
 function App() {
   return (
     <div>

@@ -5,6 +5,7 @@ class SchoolForm extends Component {
         studentData: {
             firstName: "",
             lastName: "",
+            address: "",
             email: "",
         }
     }
@@ -12,13 +13,13 @@ class SchoolForm extends Component {
     inputFieldData = {
         firstName: { labelText: "First name", type: "text", defaultValue: "", },
         lastName: { labelText: "Last name", type: "text", defaultValue: "", },
+        address: { labelText: "Address", type: "text", defaultValue: "", },
         email: { labelText: "Email", type: "email", defaultValue: "", },
     }
 
     updateValue = ({ target }) => {
-        const newStudentData = { ...this.state.studentData };
-        const oldValue = newStudentData[target.name]
-        const newValue = typeof oldValue === "string" ? target.value : parseInt(target.value);
+        const newStudentData = { ...this.state.studentData};
+        const newValue = target.value;
         newStudentData[target.name] = newValue;
         this.setState({ studentData: newStudentData })
     }
@@ -48,23 +49,34 @@ class SchoolForm extends Component {
         )
     }
 
-
     addNewStudent = (e) => {
         e.preventDefault();
-        this.props.addStudent(this.state.studentData);
-        const newStudentData = { ...this.state.studentData };
-        for (const key in newStudentData) {
-            newStudentData[key] = this.inputFieldData[key].defaultValue;
-        }
-        this.setState({ studentData: newStudentData });
+
+        const {firstName, lastName, address, email} = this.state.studentData;
+        fetch("https://629e0de33dda090f3c126d46.mockapi.io/students", {
+            method: "POST",
+            body: JSON.stringify({name: firstName + " " + lastName, address, email: email}),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        })
+        .then(res => {
+            this.props.toggleAddStudent();
+            if(!res.ok){
+                throw new Error ("Couldn't add student!")
+            }
+        })
+        .catch(error => console.error(error))
     }
 
+    
     render() {
         return (
             <form autoComplete="off" onSubmit={this.addNewStudent}>
                 <h1>Student Form</h1>
                 {this.getInputFieldJSXArray()}
-                <button>Submit</button>
+                <button type="submit">Submit</button>
+                <button type="button" onClick={this.props.toggleAddStudent}>Cancel</button>
             </form>
         );
 
