@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/7/ABCDApp/ChatApp'
+import {default as Component} from './Components/8/MemeGeneratorApp'
 function App() {
   return (
     <div>
