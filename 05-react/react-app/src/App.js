@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/8/MemeGeneratorApp'
+import {default as Component} from './Components/9/TimeInputs'
 function App() {
   return (
     <div>
