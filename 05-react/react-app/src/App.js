@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/9/TimeInputs'
+import {default as Component} from './Components/10/Algolia/Algolia'
 function App() {
   return (
     <div>
