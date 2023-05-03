@@ -11,9 +11,11 @@ export default function AlgoliaApp() {
             try {
                 const data = await baseUrl.get(query);
                 const hits = (data.data.hits);
+                console.log(hits)
                 setResults(hits);
             } catch (err) {
-                setResults([err])
+                console.error("Could not get links. " + err.message)
+                setResults([{ title: "Something went wrong. please try again"}])
             }
         }
         getData();
@@ -49,7 +51,7 @@ function LinkList({ list }) {
             {list.map((el, index) => {
                 return (
                     <li key={index}>
-                        <a href={el.url}>{el.title}</a>
+                        <a href={el.url || el.story_url}>{el.title || el.story_title}</a>
                     </li>
                 )
             })}
