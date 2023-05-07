@@ -10,7 +10,7 @@ export default function Login() {
     const navigate = useNavigate();
 
     useEffect(() => { // redirect if user is logged in already
-        if (localStorage.getItem("userId")){
+        if (localStorage.getItem("username")){
             navigate("/dashboard")
         }
     }, [])
@@ -20,15 +20,10 @@ export default function Login() {
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const { data: users } = await baseUrl.get("users")
-
-            const user = users.find((user) => user.name === name)
+            const {data: user} = await baseUrl.get("users?name=" + name)
             if (!user) throw new Error ("no such user");
 
-            const userPassword = latToPassword(user.address.geo.lat);
-            if (userPassword !== password) throw new Error ("wrong password");
-
-            localStorage.setItem("userId", user.id);
+            localStorage.setItem("username", user[0].name);
             navigate("/dashboard");
         } catch (e) {
             setError(e.message)
