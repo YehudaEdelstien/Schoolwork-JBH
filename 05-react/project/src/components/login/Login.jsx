@@ -23,7 +23,7 @@ export default function Login() {
             const {data: user} = await baseUrl.get("users?name=" + name)
             if (!user) throw new Error ("no such user");
 
-            localStorage.setItem("username", user[0].name);
+            localStorage.setItem("username", user[0].username);
             navigate("/dashboard");
         } catch (e) {
             setError(e.message)

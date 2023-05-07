@@ -20,17 +20,17 @@ function Dashboard() {
     }, [])
 
     const fetchData = async (name) => {
-        const {data} = await baseUrl.get("users?name=" + name);
+        const {data} = await baseUrl.get("users?username=" + name);
         setUserData(data[0])
     }
 
     if (!userData) return (<div></div>)
 
     return (<>
-        <Navbar username={userData.name}/>
+        <Navbar username={userData.username}/>
 
         <Routes>
-            <Route path='*' element={<Info />} />
+            <Route path='*' element={<Info userData={userData}/>} />
             <Route path="todos" element={<ToDos />} />
         </Routes>
     </>

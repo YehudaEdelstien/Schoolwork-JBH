@@ -1,7 +1,11 @@
-function Info() {
+function Info({userData}) {
+    console.log(userData)
     return (
         <div>
-            info
+            <div>Full name: {userData.name}</div>
+            <div>Phone: {userData.phone}</div>
+            <div>Company: {userData.company.name}</div>
+            <div>Email: {userData.email}</div>
         </div>
     );
 }
