@@ -16,21 +16,22 @@ function Dashboard() {
         if (!username) {
             navigate("/login");
         }
-        fetchData(username)
-    }, [])
+        
+        const fetchData = async () => {
+            const { data } = await baseUrl.get("users?username=" + username);
+            setUserData(data[0])
+        }
+        fetchData()
+        
+    }, [navigate])
 
-    const fetchData = async (name) => {
-        const {data} = await baseUrl.get("users?username=" + name);
-        setUserData(data[0])
-    }
-
-    if (!userData) return (<div></div>)
+    if (!userData) return (<div>loading...</div>)
 
     return (<>
-        <Navbar username={userData.username}/>
+        <Navbar username={userData.username} />
 
         <Routes>
-            <Route path='*' element={<Info userData={userData}/>} />
+            <Route path='*' element={<Info userData={userData} />} />
             <Route path="todos" element={<ToDos />} />
         </Routes>
     </>
@@ -39,7 +40,7 @@ function Dashboard() {
 
 export default Dashboard;
 
-function Navbar({username}) {
+function Navbar({ username }) {
     return (
         <nav>
             Hello {username}!-

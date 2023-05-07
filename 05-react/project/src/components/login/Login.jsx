@@ -13,15 +13,14 @@ export default function Login() {
         if (localStorage.getItem("username")){
             navigate("/dashboard")
         }
-    }, [])
+    }, [navigate])
 
     // component functions
 
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const {data: user} = await baseUrl.get("users?name=" + name)
-            if (!user) throw new Error ("no such user");
+            const {data: user} = await baseUrl.get("users?username=" + name)
 
             localStorage.setItem("username", user[0].username);
             navigate("/dashboard");
@@ -41,7 +40,7 @@ export default function Login() {
     const getRandomUser = async () => {
         const { data: users } = await baseUrl.get("users");
         const user = (users[Math.floor(Math.random() * users.length)]);
-        setName(user.name);
+        setName(user.username);
         setPassword(latToPassword(user.address.geo.lat));
     }
 
