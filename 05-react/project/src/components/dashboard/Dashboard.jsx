@@ -24,9 +24,10 @@ function Dashboard() {
         setUserData(data[0])
     }
 
+    if (!userData) return (<div></div>)
 
     return (<>
-        <Navbar/>
+        <Navbar username={userData.name}/>
 
         <Routes>
             <Route path='*' element={<Info />} />
