@@ -32,7 +32,7 @@ function Dashboard() {
 
         <Routes>
             <Route path='*' element={<Info userData={userData} />} />
-            <Route path="todos" element={<ToDos />} />
+            <Route path="todos" element={<ToDos userId={userData.id}/>} />
         </Routes>
     </>
     );

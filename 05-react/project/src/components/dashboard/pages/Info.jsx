@@ -1,5 +1,4 @@
 function Info({userData}) {
-    console.log(userData)
     return (
         <div>
             <div>Full name: {userData.name}</div>
