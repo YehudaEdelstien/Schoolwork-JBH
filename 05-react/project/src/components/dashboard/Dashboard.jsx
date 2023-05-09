@@ -3,8 +3,9 @@ import { Link, useNavigate, Routes, Route } from "react-router-dom";
 
 import baseUrl from "../baseUrl";
 
-import ToDos from './pages/ToDos';
 import Info from './pages/Info';
+import ToDos from './pages/ToDos';
+import Posts from "./pages/Posts";
 
 function Dashboard() {
     const [userData, setUserData] = useState()
@@ -33,6 +34,7 @@ function Dashboard() {
         <Routes>
             <Route path='*' element={<Info userData={userData} />} />
             <Route path="todos" element={<ToDos userId={userData.id}/>} />
+            <Route path="posts" element={<Posts/>}/>
         </Routes>
     </>
     );
