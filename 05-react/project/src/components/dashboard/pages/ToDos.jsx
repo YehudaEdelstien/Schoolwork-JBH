@@ -48,12 +48,25 @@ function ToDos({ userId }) {
                     return prevTodos.toSorted((a, b) => Number(a.completed) - Number(b.completed));
                 case "name":
                     return prevTodos.toSorted((a, b) => a.title.localeCompare(b.title));
+                case "random":
+                    return shuffledArray(prevTodos);
                 default:
                     return prevTodos;
             }
         })
     }
 
+    function shuffledArray(array) {
+        let newArray = [...array];
+        for (let i = newArray.length - 1; i > 0; i--) {
+            // get a random element
+            const j = Math.floor(Math.random() * (i + 1)); 
+            // put it at the end of the array, it won't change again because the range shrinks in this for loop.
+            [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+        }
+        return newArray;
+    }
+    
     return (
         <>
             <h3>TODOS</h3>
