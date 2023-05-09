@@ -61,7 +61,7 @@ function ToDos({ userId }) {
         for (let i = newArray.length - 1; i > 0; i--) {
             // get a random element
             const j = Math.floor(Math.random() * (i + 1)); 
-            // put it at the end of the array, it won't change again because the range shrinks in this for loop.
+            // put it at the end of the array, it won't change again because the range shrinks every loop.
             [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
         }
         return newArray;
