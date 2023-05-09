@@ -46,6 +46,8 @@ function ToDos({ userId }) {
                     return prevTodos.toSorted((a, b) => a.id - b.id);
                 case "completed":
                     return prevTodos.toSorted((a, b) => Number(a.completed) - Number(b.completed));
+                case "name":
+                    return prevTodos.toSorted((a, b) => a.title.localeCompare(b.title));
                 default:
                     return prevTodos;
             }
