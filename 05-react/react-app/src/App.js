@@ -1,6 +1,6 @@
 import './App.css';
 
-import {default as Component} from './Components/10/Algolia/Algolia'
+import {default as Component} from './Components/12/App'
 function App() {
   return (
     <div>
