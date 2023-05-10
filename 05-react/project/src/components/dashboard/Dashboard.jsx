@@ -5,7 +5,7 @@ import baseUrl from "../baseUrl";
 
 import Info from './pages/Info';
 import ToDos from './pages/ToDos';
-import Posts from "./pages/Posts";
+import Posts from './pages/Posts';
 
 function Dashboard() {
     const [userData, setUserData] = useState()
@@ -34,7 +34,7 @@ function Dashboard() {
         <Routes>
             <Route path='*' element={<Info userData={userData} />} />
             <Route path="todos" element={<ToDos userId={userData.id}/>} />
-            <Route path="posts" element={<Posts/>}/>
+            <Route path="posts" element={<Posts userId={userData.id}/>}/>
         </Routes>
     </>
     );
