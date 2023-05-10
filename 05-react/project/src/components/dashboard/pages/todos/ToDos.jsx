@@ -77,11 +77,12 @@ function ToDos({ userId }) {
             <h2>TODOS</h2>
 
             {error && <div style={{ color: "red" }}>{error}</div>}
-            
+
             <SortSelect sortTodos={sortTodos} />
             {todos ?
                 todos.map(task => <ToDoItem task={task} key={task.id} onChange={updateToDo} />)
-                : <div className='Spinner'></div>}
+                : <div className='Spinner'></div>
+            }
         </>
     );
 }
