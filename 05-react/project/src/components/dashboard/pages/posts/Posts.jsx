@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import baseUrl from '../../baseUrl';
+import baseUrl from '../../../baseUrl';
 import { Routes, Route, Link, useParams } from 'react-router-dom';
 
 function Posts({ userId }) {

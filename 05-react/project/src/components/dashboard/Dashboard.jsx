@@ -4,8 +4,8 @@ import { Link, useNavigate, Routes, Route } from "react-router-dom";
 import baseUrl from "../baseUrl";
 
 import Info from './pages/Info';
-import ToDos from './pages/ToDos';
-import Posts from './pages/Posts';
+import ToDos from './pages/todos/ToDos';
+import Posts from './pages/posts/Posts';
 
 function Dashboard() {
     const [userData, setUserData] = useState()
