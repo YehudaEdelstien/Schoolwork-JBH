@@ -32,7 +32,7 @@ function Posts({ userId }) {
             {error && <div style={{ color: "red" }}>{error}</div>}
 
             <Routes>
-                <Route path="*" element={<AllPosts posts={posts} />} />
+                <Route path="/" element={<AllPosts posts={posts} />} />
                 <Route path=":postIndex" element={<FocusedPost posts={posts} />} />
             </Routes>
         </>
