@@ -48,12 +48,13 @@ export default Dashboard;
 function Navbar({ username }) {
     return (
         <nav>
-            <Link to="/">Hello {username}!</Link>
+            <Link to="">Hello {username}!</Link>
             -----
             <Link to="Info">Info</Link>-
             <Link to="Todos">Todos</Link>-
             <Link to="Posts">Posts</Link>-
-            <Link to="Albums">Albums</Link>-
+            <Link to="Albums">Albums</Link>
+            -----
             <a href="/login" onClick={() => {
                 localStorage.removeItem("username");
             }}>Logout</a>
