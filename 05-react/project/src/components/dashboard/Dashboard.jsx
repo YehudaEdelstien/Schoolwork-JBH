@@ -34,7 +34,7 @@ function Dashboard() {
         <Routes>
             <Route path='*' element={<Info userData={userData} />} />
             <Route path="todos" element={<ToDos userId={userData.id}/>} />
-            <Route path="posts" element={<Posts userId={userData.id}/>}/>
+            <Route path="posts/*" element={<Posts userId={userData.id}/>}/>
         </Routes>
     </>
     );
@@ -45,7 +45,7 @@ export default Dashboard;
 function Navbar({ username }) {
     return (
         <nav>
-            Hello {username}!-
+            Hello {username}!-----
             <Link to="Info">Info</Link>-
             <Link to="Todos">Todos</Link>-
             <Link to="Posts">Posts</Link>-

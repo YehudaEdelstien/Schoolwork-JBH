@@ -9,9 +9,14 @@ function ToDos({ userId }) {
         getToDos();
 
         async function getToDos() {
-            const toDoData = await baseUrl.get(`todos?userId=${userId}`)
-            const toDoArray = toDoData.data.map((task, index) => ({ ...task, index: index }))
-            setTodos(toDoArray)
+            try {
+                const toDoData = await baseUrl.get(`todos?userId=${userId}`)
+                const toDoArray = toDoData.data.map((task, index) => ({ ...task, index: index }))
+                setTodos(toDoArray)
+            } catch (e) {
+                console.error(e);
+                setError("Could not get Tasks. Please refresh the page and try again.")
+            }
         }
     }, [userId])
 
@@ -20,14 +25,14 @@ function ToDos({ userId }) {
         const indexToChange = todos.indexOf(elemntObj);
         const prevCompletionState = elemntObj.completed;
 
-        setState({...elemntObj, completed: "changing"});
+        setState({ ...elemntObj, completed: "changing" });
 
         try {
             await baseUrl.patch(`todos/${elemntObj.id}`, { completed: !prevCompletionState })
-            setState({...elemntObj, completed: !prevCompletionState})
+            setState({ ...elemntObj, completed: !prevCompletionState })
         } catch (e) {
             setError("Could not update task. Please refresh the page and try again.")
-            setState({...elemntObj, completed: prevCompletionState})
+            setState({ ...elemntObj, completed: prevCompletionState })
         }
 
         function setState(obj) {
@@ -60,20 +65,22 @@ function ToDos({ userId }) {
         let newArray = [...array];
         for (let i = newArray.length - 1; i > 0; i--) {
             // get a random element
-            const j = Math.floor(Math.random() * (i + 1)); 
+            const j = Math.floor(Math.random() * (i + 1));
             // put it at the end of the array, it won't change again because the range shrinks every loop.
             [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
         }
         return newArray;
     }
-    
+
     return (
         <>
-            <h3>TODOS</h3>
-            {error && <div style={{color: "red"}}>{error}</div>}
+            <h2>TODOS</h2>
+
+            {error && <div style={{ color: "red" }}>{error}</div>}
+            
             <SortSelect sortTodos={sortTodos} />
             {todos ?
-                todos.map(task => <ToDoItem task={task} key={task.id} onChange={updateToDo}/>)
+                todos.map(task => <ToDoItem task={task} key={task.id} onChange={updateToDo} />)
                 : <div className='Spinner'></div>}
         </>
     );
