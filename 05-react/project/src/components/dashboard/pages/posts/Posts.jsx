@@ -15,7 +15,6 @@ function Posts({ userId }) {
         async function getPosts() {
             try {
                 const postData = await baseUrl.get(`posts?userId=${userId}`)
-                console.log(postData.data)
                 const postArray = postData.data.map((post, index) => ({ ...post, index: index }))
                 setPosts(postArray)
             } catch (e) {
