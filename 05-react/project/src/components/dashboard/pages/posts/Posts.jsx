@@ -27,7 +27,7 @@ function Posts({ userId }) {
 
     return (
         <>
-            <h2>Posts</h2>
+            <h2>POSTS</h2>
 
             {error && <div style={{ color: "red" }}>{error}</div>}
 
