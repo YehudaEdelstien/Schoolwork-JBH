@@ -22,6 +22,10 @@ export default function Login() {
         try {
             const {data: user} = await baseUrl.get("users?username=" + name)
 
+            if (user.length !== 1 || latToPassword(user[0].address.geo.lat) !== password) {
+                throw new Error("No such user name and password");
+            }
+
             localStorage.setItem("username", user[0].username);
             navigate("/dashboard");
         } catch (e) {
