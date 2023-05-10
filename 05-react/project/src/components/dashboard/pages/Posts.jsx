@@ -36,7 +36,7 @@ function AllPosts({ posts }) {
     );
 }
 
-function Post({title, body, selectPost}) {
+function Post({title, body, selectPost, postId}) {
     const styleObj = {
         margin: "20px",
         padding: "15px",
@@ -45,7 +45,7 @@ function Post({title, body, selectPost}) {
     }
 
     return (
-        <div style={styleObj}>
+        <div style={styleObj} onClick={() => selectPost(postId)}>
             <h4>{title}</h4>
             <p>{body}</p>
         </div>
