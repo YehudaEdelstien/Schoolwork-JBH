@@ -6,6 +6,7 @@ import baseUrl from "../baseUrl";
 import Info from './pages/Info';
 import ToDos from './pages/todos/ToDos';
 import Posts from './pages/posts/Posts';
+import NotFound from "./pages/NotFound";
 
 function Dashboard() {
     const [userData, setUserData] = useState()
@@ -32,9 +33,11 @@ function Dashboard() {
         <Navbar username={userData.username} />
 
         <Routes>
-            <Route path='*' element={<Info userData={userData} />} />
-            <Route path="todos" element={<ToDos userId={userData.id}/>} />
-            <Route path="posts/*" element={<Posts userId={userData.id}/>}/>
+            <Route path="/" element={<h3>Please choose a page to get started!</h3>}/>
+            <Route path='info' element={<Info userData={userData} />} />
+            <Route path="todos" element={<ToDos userId={userData.id} />} />
+            <Route path="posts/*" element={<Posts userId={userData.id} />} />
+            <Route path="*"  element={<NotFound />} />
         </Routes>
     </>
     );
@@ -45,7 +48,8 @@ export default Dashboard;
 function Navbar({ username }) {
     return (
         <nav>
-            Hello {username}!-----
+            <Link to="/">Hello {username}!</Link>
+            -----
             <Link to="Info">Info</Link>-
             <Link to="Todos">Todos</Link>-
             <Link to="Posts">Posts</Link>-
