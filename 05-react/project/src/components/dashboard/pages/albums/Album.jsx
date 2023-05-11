@@ -20,7 +20,7 @@ function Album({ albums }) {
         }
 
         getAlbums();
-    }, [])
+    }, [albumIndex])
 
     if (!album || !albums) {
         return <div className='Spinner'></div>
