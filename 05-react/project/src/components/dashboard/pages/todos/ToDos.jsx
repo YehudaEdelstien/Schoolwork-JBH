@@ -8,7 +8,7 @@ function ToDos({ userId }) {
     useEffect(() => {
         async function getToDos() {
             try {
-                const toDoData = await baseUrl.get(`todos?userId=${userId}`)
+                const toDoData = await baseUrl.get(`users/${userId}/todos`)
                 const toDoArray = toDoData.data.map((task, index) => ({ ...task, index: index }))
                 setTodos(toDoArray)
             } catch (e) {

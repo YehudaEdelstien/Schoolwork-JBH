@@ -38,7 +38,7 @@ function Dashboard() {
             <Route path='info' element={<Info userData={userData} />} />
             <Route path="todos" element={<ToDos userId={userData.id} />} />
             <Route path="posts/*" element={<Posts userId={userData.id} />} />
-            <Route path="albums" element={<Albums userId={userData.id}/>} />
+            <Route path="albums/*" element={<Albums userId={userData.id}/>} />
             <Route path="*"  element={<NotFound />} />
         </Routes>
     </>
