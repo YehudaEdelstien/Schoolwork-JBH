@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import {useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import {useNavigate, Navigate } from "react-router-dom";
 import baseUrl from '../baseUrl';
 
 export default function Login() {
@@ -9,11 +9,10 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    useEffect(() => { // redirect if user is logged in already
-        if (localStorage.getItem("username")){
-            navigate("/dashboard")
-        }
-    }, [navigate])
+    
+    if (localStorage.getItem("username")) { // redirect if logged in
+        return <Navigate to="/dashboard" replace={true}/>
+    }
 
     // component functions
 

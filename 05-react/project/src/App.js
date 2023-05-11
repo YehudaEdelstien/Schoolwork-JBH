@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="login" />} />
+          <Route path="/" element={<Navigate to="login" replace={true}/>} />
           <Route path="login" element={<Login />} />
           <Route path="dashboard/*" element={<Dashboard />} />
         </Routes>
