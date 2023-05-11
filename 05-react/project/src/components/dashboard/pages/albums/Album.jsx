@@ -22,7 +22,7 @@ function Album({ albums }) {
         getAlbums();
     }, [albumIndex])
 
-    if (!album || !albums) {
+    if (!album || !albums) { // unloaded content error handling
         return <div className='Spinner'></div>
     }
 

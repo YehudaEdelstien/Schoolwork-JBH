@@ -6,7 +6,7 @@ export default function FocusedPost({ posts }) {
     const [comments, setComments] = useState();
     const { postIndex } = useParams();
 
-    if (!posts) {
+    if (!posts) { // unloaded content error handling
         return <div></div>
     }
 
@@ -25,6 +25,7 @@ export default function FocusedPost({ posts }) {
             setComments("Could not load comments");
         }
     }
+
 
     return (
         <div>

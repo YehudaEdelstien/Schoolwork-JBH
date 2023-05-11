@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import baseUrl from '../../../baseUrl';
 
+import ToDoItem from './ToDoItem';
+import SortSelecter from './SortSelecter';
+
 function ToDos({ userId }) {
     const [todos, setTodos] = useState();
     const [error, setError] = useState();
@@ -61,7 +64,7 @@ function ToDos({ userId }) {
         })
     }
 
-    function shuffledArray(array) {
+    function shuffledArray(array) { // durstenfeld shuffle
         let newArray = [...array];
         for (let i = newArray.length - 1; i > 0; i--) {
             // get a random element
@@ -78,7 +81,7 @@ function ToDos({ userId }) {
 
             {error && <div style={{ color: "red" }}>{error}</div>}
 
-            <SortSelect sortTodos={sortTodos} />
+            <SortSelecter sortTodos={sortTodos} />
             {todos ?
                 todos.map(task => <ToDoItem task={task} key={task.id} onChange={updateToDo} />)
                 : <div className='Spinner'></div>
@@ -88,35 +91,3 @@ function ToDos({ userId }) {
 }
 
 export default ToDos;
-
-function SortSelect({ sortTodos }) {
-
-    function setSelection({ target }) {
-        console.log(target.value)
-        sortTodos(target.value)
-    }
-
-    return (
-        <div>
-            <label htmlFor="sortMethod">Sort by</label>
-            <select name="sortMethod" id="sortMethod" onChange={setSelection}>
-                <option value="id">Id</option>
-                <option value="completed">Completed</option>
-                <option value="name">Task name</option>
-                <option value="random">Random</option>
-            </select>
-        </div>
-    )
-}
-
-function ToDoItem({ task, onChange }) {
-    return (
-        <div>
-            <span>{task.index + 1}. </span>
-            {task.title}
-            {task.completed !== "changing" ?
-                <input type='checkbox' checked={task.completed} onChange={() => onChange(task)} />
-                : <div className='Spinner Spinner-sml'></div>}
-        </div>
-    )
-}
