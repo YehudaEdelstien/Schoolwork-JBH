@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import baseUrl from '../../../baseUrl';
 
 export default function FocusedPost({ posts }) {
@@ -28,6 +28,7 @@ export default function FocusedPost({ posts }) {
 
     return (
         <div>
+            <Link to={'..'}>Go back</Link>
             <Post post={post} />
             {comments ?
                 <Comments data={comments} />
