@@ -6,6 +6,7 @@ import baseUrl from "../baseUrl";
 import Info from './pages/Info';
 import ToDos from './pages/todos/ToDos';
 import Posts from './pages/posts/Posts';
+import Albums from "./pages/albums/Albums";
 import NotFound from "./pages/NotFound";
 
 function Dashboard() {
@@ -37,6 +38,7 @@ function Dashboard() {
             <Route path='info' element={<Info userData={userData} />} />
             <Route path="todos" element={<ToDos userId={userData.id} />} />
             <Route path="posts/*" element={<Posts userId={userData.id} />} />
+            <Route path="albums" element={<Albums userId={userData.id}/>} />
             <Route path="*"  element={<NotFound />} />
         </Routes>
     </>

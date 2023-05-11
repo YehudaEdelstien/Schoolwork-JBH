@@ -6,8 +6,6 @@ function ToDos({ userId }) {
     const [error, setError] = useState();
 
     useEffect(() => {
-        getToDos();
-
         async function getToDos() {
             try {
                 const toDoData = await baseUrl.get(`todos?userId=${userId}`)
@@ -18,6 +16,8 @@ function ToDos({ userId }) {
                 setError("Could not get Tasks. Please refresh the page and try again.")
             }
         }
+
+        getToDos();
     }, [userId])
 
 
