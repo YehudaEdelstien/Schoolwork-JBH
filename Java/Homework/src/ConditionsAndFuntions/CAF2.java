@@ -15,7 +15,7 @@ public class CAF2 {
         int num2 = in.nextInt();
         int num3 = in.nextInt();
 
-        int smallest = smallestOfThree(num1, num2, num3);
+        int smallest = smallestOfThreeAlt(num1, num2, num3);
 
         System.out.println("The smallest number is " + smallest);
     }
@@ -48,6 +48,10 @@ public class CAF2 {
 
         // return the smallest number
         return smallestNum;
+    }
+
+    public static int smallestOfThreeAlt (int num1, int num2, int num3) {
+        return biggestOfThree(-num1, -num2, -num3) * -1;
     }
 
     public static int biggestOfTwo(int numX, int numY) {
