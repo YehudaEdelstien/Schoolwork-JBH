@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class L1 {
     public static void main (String[] args) {
+        calcSquaresFactorial();
+    }
+
+    public static void calcSquaresFactorial() {
+
         Scanner in = new Scanner(System.in);
         int input;
         int total = 0;
@@ -14,7 +19,7 @@ public class L1 {
         for (int i = 1; i <= input; i++) {
             total += i * i;
         }
-        System.out.println("Result is: "+total);
+        System.out.println("total of squares is: "+total);
     }
 }
 /*
