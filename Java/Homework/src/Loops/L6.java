@@ -19,17 +19,24 @@ public class L6 {
         int pyramidHeight = letter - 'a';
 
         for (int i = 0; i <= pyramidHeight; i++) {
-            for (int j = 0; j < pyramidHeight - i; j++) {
-                System.out.print(' ');
-            }
-
-            for (int k = 0; k <= (i * 2); k++) {
-                int num = Math.abs(k - i);
-                char let = (char)(i - num + 'a');
-                System.out.print(let);
-            }
+            printBlanks(pyramidHeight - i);
+            printLetterBoomerang(i);
 
             System.out.println("");
+        }
+    }
+
+    public static void printBlanks(int blanks) {
+        for (int i = 0; i < blanks; i++) {
+            System.out.print(' ');
+        }
+    }
+
+    public static void printLetterBoomerang(int letterCount) {
+        for (int i = 0; i <= (letterCount * 2); i++) {
+            int num = Math.abs(i - letterCount);
+            char let = (char)(letterCount - num + 'a');
+            System.out.print(let);
         }
     }
 }
