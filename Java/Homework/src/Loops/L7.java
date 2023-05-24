@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class L7 {
     public static void main(String[] args) {
         int n = getNumberInput("Input Number-Cube size:");
-        int k = getNumberInput("Input Numbe-Cube amount:");
+        int k = getNumberInput("Input Number-Cube amount:");
 
         printNumberCubes(n, k);
     }
