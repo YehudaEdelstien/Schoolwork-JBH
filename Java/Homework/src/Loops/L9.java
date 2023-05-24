@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class L9 {
     public static void main(String[] args) {
         int num = getNumberInput("Enter a number:");
-        System.out.println(num+" has "+divisors(num)+" divisors");
+        System.out.println(num+" has "+divisorsOf(num)+" divisors");
     }
 
     public static int getNumberInput(String message) {
@@ -15,7 +15,7 @@ public class L9 {
         return in.nextInt();
     }
 
-    public static int divisors(int num) {
+    public static int divisorsOf(int num) {
         int counter = 0;
         for (int i = 1; i <= num; i++) {
             if (num % i == 0) {
