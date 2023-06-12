@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate, Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import baseUrl from '../baseUrl';
 
 export default function Login() {
@@ -9,9 +9,9 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    
+
     if (localStorage.getItem("username")) { // redirect if logged in
-        return <Navigate to="/dashboard" replace={true}/>
+        return <Navigate to="/dashboard" replace={true} />
     }
 
     // component functions
@@ -19,7 +19,7 @@ export default function Login() {
     const submit = async (e) => {
         e.preventDefault();
         try {
-            const {data: user} = await baseUrl.get("users?username=" + name)
+            const { data: user } = await baseUrl.get("users?username=" + name)
 
             if (user.length !== 1 || latToPassword(user[0].address.geo.lat) !== password) {
                 throw new Error("No such user name and password");
@@ -51,15 +51,17 @@ export default function Login() {
         <>
             <h1>Login</h1>
             <form onSubmit={submit}>
-                <button type="button" onClick={getRandomUser}>get a user</button>
+                <button type="button" onClick={getRandomUser}>Get a user</button>
                 <div>
-                    name<input value={name} onChange={({ target }) => setName(target.value)} required></input>
+                    <label for="name">Name</label>
+                    <input id="name" value={name} onChange={({ target }) => setName(target.value)} required></input>
                 </div>
                 <div>
-                    password<input value={password} onChange={({ target }) => setPassword(target.value)} required></input>
+                    <label for="password">Password</label>
+                    <input id="password" value={password} onChange={({ target }) => setPassword(target.value)} required></input>
                 </div>
-                <button>login</button>
-                <div style={{color: "red"}}>{error}</div>
+                <button>Login</button>
+                <div style={{ color: "red" }}>{error}</div>
             </form>
         </>
     );
