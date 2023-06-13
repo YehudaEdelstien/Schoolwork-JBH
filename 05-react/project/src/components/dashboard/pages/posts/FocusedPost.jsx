@@ -73,7 +73,7 @@ function Comments({ data }) {
 
 function Comment({ data }) {
     const commentStyle = {
-        width: "75vw",
+        width: "75%",
         margin: "10px auto",
         padding: "15px",
         borderTop: "1px solid black",

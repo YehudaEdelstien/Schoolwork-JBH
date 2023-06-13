@@ -19,29 +19,30 @@ function Dashboard() {
         if (!username) {
             navigate("/login");
         }
-        
+
         const fetchData = async () => {
             const { data } = await baseUrl.get("users?username=" + username);
             setUserData(data[0])
         }
         fetchData()
-        
+
     }, [navigate])
 
     if (!userData) return (<div>loading...</div>)
 
-    return (<>
-        <Navbar username={userData.username} />
+    return (
+        <div className="dashboard">
+            <Navbar username={userData.username} />
 
-        <Routes>
-            <Route path="/" element={<h3>Please choose a page to get started!</h3>}/>
-            <Route path='info' element={<Info userData={userData} />} />
-            <Route path="todos" element={<ToDos userId={userData.id} />} />
-            <Route path="posts/*" element={<Posts userId={userData.id} />} />
-            <Route path="albums/*" element={<Albums userId={userData.id}/>} />
-            <Route path="*"  element={<NotFound />} />
-        </Routes>
-    </>
+            <Routes>
+                <Route path="/" element={<h3>Please choose a page to get started!</h3>} />
+                <Route path='info' element={<Info userData={userData} />} />
+                <Route path="todos" element={<ToDos userId={userData.id} />} />
+                <Route path="posts/*" element={<Posts userId={userData.id} />} />
+                <Route path="albums/*" element={<Albums userId={userData.id} />} />
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </div>
     );
 }
 
