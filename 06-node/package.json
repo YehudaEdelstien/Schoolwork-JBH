@@ -1,0 +1,14 @@
+{
+  "name": "jbh_node",
+  "version": "1.0.0",
+  "description": "NodeJS coursework for JBH",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Yehuda Edelstein",
+  "license": "MIT-0",
+  "dependencies": {
+    "uniqid": "^5.4.0"
+  }
+}
