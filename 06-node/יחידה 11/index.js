@@ -1,23 +1,22 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const serveStatic = require('serve-static')
 
-const {filesHandler} = require('./filesHandler');
+const api = require('./api');
 
-const PORT = 3000;
+const PORT = 4000;
 
-app.use(express.static(path.join(__dirname, 'react-app', 'build')));
 
-app.get('/', async (req, res) => {
-    extension = path.extname(req.path);
-    console.log(req.path)
+// app.use(express.static(path.join(__dirname, 'react-app', 'build')));
+app.use(serveStatic(path.join(__dirname, 'react-app', 'build'), {fallthrough: true}))
 
-    if (extension === '') {
-        res.send(await filesHandler.listFiles(req.path));
-    } else if (extension === '.txt') {
-        res.send(await filesHandler.getFileText(req.path));
-    }
-})
+app.use('/api', api)
+app.get('*', (req, res) => {
+    let websitepath = (path.join(__dirname, 'react-app', 'build', 'index.html'));
+    res.sendFile(websitepath);
+});
+
 
 app.listen(PORT, function(err) {
     if (err) console.log("Error in server setup: ", err);

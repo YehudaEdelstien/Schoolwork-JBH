@@ -20,5 +20,5 @@ module.exports.filesHandler = fh;
 (async function test(){
     // fh.getFile();
     console.log(path.extname('file'))
-    fh.getFile('file1.txt');
+    fh.getFileText('file1.txt');
 })();
