@@ -8,8 +8,7 @@ const api = require('./api');
 const PORT = 4000;
 
 
-// app.use(express.static(path.join(__dirname, 'react-app', 'build')));
-app.use(serveStatic(path.join(__dirname, 'react-app', 'build'), {fallthrough: true}))
+app.use(express.static(path.join(__dirname, 'react-app', 'build')));
 
 app.use('/api', api)
 app.get('*', (req, res) => {

@@ -3,6 +3,7 @@ const path = require('path');
 
 const {filesHandler} = require('./filesHandler');
 
+
 const router = express.Router()
 
 router.get('/*', async (req, res) => {
