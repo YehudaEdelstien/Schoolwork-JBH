@@ -1,5 +1,6 @@
 import { useLocation, Link } from "react-router-dom"
 
+
 export default function About() {
   const location = useLocation().pathname
   const pathArr = location.split('/');

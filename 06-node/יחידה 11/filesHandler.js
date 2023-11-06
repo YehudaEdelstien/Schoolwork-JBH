@@ -15,10 +15,3 @@ const fh = {
 };
 
 module.exports.filesHandler = fh;
-
-// tests
-(async function test(){
-    // fh.getFile();
-    console.log(path.extname('file'))
-    fh.getFileText('file1.txt');
-})();

@@ -1,12 +1,12 @@
 import { BrowserRouter} from "react-router-dom"
-import NavBar from './components/NavBar'
+import Explorer from './components/Explorer'
 
 import './pico.css'
 
 function App() {
   return (
     <BrowserRouter>
-        <NavBar />
+        <Explorer />
     </BrowserRouter>
   );
 }

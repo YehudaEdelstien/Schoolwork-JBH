@@ -1,11 +1,14 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const serveStatic = require('serve-static')
+const cors = require('cors')
 
 const api = require('./api');
 
 const PORT = 4000;
+
+
+app.use(cors());
 
 
 app.use(express.static(path.join(__dirname, 'react-app', 'build')));
