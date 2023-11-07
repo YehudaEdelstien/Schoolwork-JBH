@@ -17,4 +17,6 @@ router.get('/*', async (req, res) => {
     }
 })
 
+router.post('/rename')
+
 module.exports = router;

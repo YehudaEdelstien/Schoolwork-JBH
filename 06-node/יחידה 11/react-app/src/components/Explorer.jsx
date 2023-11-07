@@ -6,6 +6,7 @@ import FilePath from './FilePath';
 import FileList from './FileList';
 import NotFound from "./NotFound";
 import Info from "./Info";
+import FileDisplayer from "./FileDisplayer";
 
 export default function Explorer() {
     const location = useLocation().pathname
@@ -50,11 +51,7 @@ export default function Explorer() {
                             <FilePath />
                             <FileList list={files} path={path} />
                         </div>
-                        <div className="span2">
-                            <p>Selected file: {selectedFilePath + '/' + selectedFile}</p>
-                            <p>Text:</p>
-                            <pre>{selectedFileText}</pre>
-                        </div>
+                        <FileDisplayer title={selectedFile} text={selectedFileText}/>
                         <Info info={selectedFileInfo}/>
                     </div>
 

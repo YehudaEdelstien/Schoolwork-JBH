@@ -1,3 +1,7 @@
+html {
+    min-height: 100vh;
+}
+
 .flex {
     width: 100vw;
     display: flex;
@@ -9,4 +13,9 @@
 
 .span2 {
     grid-column: span 2
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
