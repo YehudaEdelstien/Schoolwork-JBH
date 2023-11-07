@@ -13,7 +13,11 @@ async function getFile(filePath = '') {
         responseObject.location = path.join(filePath, '..');
         responseObject.title = path.basename(reqPath);
         responseObject.text = await fs.readFile(reqPath, 'utf-8');
-        console.log(responseObject.text);
+        responseObject.info = {
+            size: stat.size,
+            created: stat.birthtime,
+            modified: stat.mtime
+        }
     } else if (stat.isDirectory){
         responseObject.files = await fs.readdir(reqPath);
         responseObject.location = filePath;

@@ -2,3 +2,11 @@
     width: 100vw;
     display: flex;
 }
+
+.span1 {
+    grid-column: span 1
+}
+
+.span2 {
+    grid-column: span 2
+}
