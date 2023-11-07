@@ -13,6 +13,7 @@ export default function Explorer() {
     const [path, setPath] = useState('/')
     const [files, setFiles] = useState([])
     const [selectedFile, setSelectedFile] = useState('');
+    const [selectedFilePath, setSelectedFilePath] = useState('')
     const [selectedFileText, setSelectedFiletext] = useState('');
     const [notFound, setNotFound] = useState(false)
 
@@ -25,13 +26,14 @@ export default function Explorer() {
                 }
             }
 
-            const { data, status} = await axios.get(url, options);
+            const { data, status } = await axios.get(url, options);
             setNotFound(status === 404);
             console.log(data)
             data.files && setFiles(data.files);
             data.location && setPath(data.location);
-            data.title && setSelectedFile(data.title)
-            data.text && setSelectedFiletext(data.text)
+            data.title && setSelectedFile(data.title);
+            data.title && setSelectedFilePath(data.location);
+            data.text && setSelectedFiletext(data.text);
         }
         getFiles();
     }, [location])
@@ -41,13 +43,17 @@ export default function Explorer() {
             {
                 notFound ?
                     <NotFound /> :
-                    <>
-                        <FilePath />
-                        <FileList list={files} path={path}/>
-                        <p>Selected file: {path + '/' + selectedFile}</p>
-                        <p>Text:</p>
-                        <p>{selectedFileText}</p>
-                    </>
+                    <div className="container">
+                        <div>
+                            <FilePath />
+                            <FileList list={files} path={path} />
+                        </div>
+                        <div>
+                            <p>Selected file: {selectedFilePath + '/' + selectedFile}</p>
+                            <p>Text:</p>
+                            <pre>{selectedFileText}</pre>
+                        </div>
+                    </div>
 
             }
         </>
