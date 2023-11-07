@@ -2,29 +2,54 @@ import { useLocation } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from 'axios';
 
-import NavBar from './NavBar';
+import FilePath from './FilePath';
 import FileList from './FileList';
+import NotFound from "./NotFound";
 
 
 export default function Explorer() {
     const location = useLocation().pathname
 
+    const [path, setPath] = useState('/')
     const [files, setFiles] = useState([])
-    const [gettingFiles, setGettingFiles] = useState([])
+    const [selectedFile, setSelectedFile] = useState('');
+    const [selectedFileText, setSelectedFiletext] = useState('');
+    const [notFound, setNotFound] = useState(false)
 
     useEffect(() => {
         async function getFiles() {
             const url = 'http://localhost:4000/api' + location
-            const {data} = await axios.get(url);
-            setFiles(data);
+            const options = {
+                validateStatus: function (status) {
+                    return status < 500; // Resolve only if the status code is less than 500
+                }
+            }
+
+            const { data, status} = await axios.get(url, options);
+            setNotFound(status === 404);
+            console.log(data)
+            data.files && setFiles(data.files);
+            data.location && setPath(data.location);
+            data.title && setSelectedFile(data.title)
+            data.text && setSelectedFiletext(data.text)
         }
         getFiles();
     }, [location])
 
     return (
         <>
-            <NavBar />
-            <FileList list={files} />
+            {
+                notFound ?
+                    <NotFound /> :
+                    <>
+                        <FilePath />
+                        <FileList list={files} path={path}/>
+                        <p>Selected file: {path + '/' + selectedFile}</p>
+                        <p>Text:</p>
+                        <p>{selectedFileText}</p>
+                    </>
+
+            }
         </>
     )
 }

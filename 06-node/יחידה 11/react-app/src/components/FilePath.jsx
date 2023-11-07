@@ -1,7 +1,7 @@
 import { useLocation, Link } from "react-router-dom"
 
 
-export default function About() {
+export default function FilePath() {
   const location = useLocation().pathname
   const pathArr = location.split('/');
   return (

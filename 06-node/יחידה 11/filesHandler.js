@@ -1,17 +1,26 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const fh = {
-    listFiles: async function listFiles(filePath = '') {
-        dirPath = path.join(__dirname, 'UserFiles', filePath)
-        files = await fs.readdir(dirPath);
-        return files;
-    },
-    getFileText: async function getFileText(filePath = '') {
-        dirPath = path.join(__dirname, 'UserFiles', filePath)
-        text = (await fs.readFile(dirPath, 'utf-8'));
-        return text;
-    },
+async function getFile(filePath = '') {
+
+    const responseObject = {};
+    const reqPath = path.join(__dirname, 'UserFiles', filePath)
+    const stat = await fs.stat(reqPath);
+
+    if (stat.isFile()) {
+        const dirPath = path.join(reqPath, '..')
+        responseObject.files = await fs.readdir(dirPath);
+        responseObject.location = path.join(filePath, '..');
+        responseObject.title = path.basename(reqPath);
+        responseObject.text = await fs.readFile(reqPath, 'utf-8');
+        console.log(responseObject.text);
+    } else if (stat.isDirectory){
+        responseObject.files = await fs.readdir(reqPath);
+        responseObject.location = filePath;
+    }
+    responseObject.location = responseObject.location.replace('\\', '/')
+
+    return responseObject;
 };
 
-module.exports.filesHandler = fh;
+module.exports.getFile = getFile;
