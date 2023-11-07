@@ -1,5 +1,4 @@
 export default function Info({info}) {
-    console.log(info)
     return (
         <div>
             <h3>Info</h3>
