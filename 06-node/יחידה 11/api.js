@@ -15,6 +15,7 @@ router.get('/*', async (req, res) => {
 router.post('/*', async (req, res) => {
     try {
         let folderPath
+        console.log('requested '+req.body.request)
         switch (req.body.request) {
             case 'rename':
                 folderPath = (await renameFile(req.path, req.body.data)).folderPath;

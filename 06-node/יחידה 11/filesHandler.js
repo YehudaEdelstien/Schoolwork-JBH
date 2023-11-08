@@ -20,12 +20,13 @@ async function getFile(filePath = '') {
     return responseObject;
 };
 
-async function renameFile(filePath = '', newName='test') {
+async function renameFile(filePath = '', {name}) {
+    console.log(name)
     filePath = decodeURI(filePath);
     const reqPath = createRequestPath(filePath);
     const fileExt = path.extname(filePath);
 
-    let newPath = await createFileName(newName, fileExt);
+    let newPath = await createFileName(name, fileExt);
     await fs.rename(reqPath, newPath);
     return({
         path: filePath,

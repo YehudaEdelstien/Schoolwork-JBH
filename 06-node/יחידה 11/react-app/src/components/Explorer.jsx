@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import axios from 'axios';
 
@@ -9,7 +9,8 @@ import Info from "./Info";
 import FileDisplayer from "./FileDisplayer";
 
 export default function Explorer() {
-    const location = useLocation().pathname
+    const location = useLocation().pathname;
+    const navigate = useNavigate();
 
     const [path, setPath] = useState('/')
     const [files, setFiles] = useState([])
@@ -19,27 +20,61 @@ export default function Explorer() {
     const [selectedFileInfo, setSelectedFileInfo] = useState({});
     const [notFound, setNotFound] = useState(false)
 
+    const axiosOptions = {
+        validateStatus: function (status) {
+            return status < 500; // Resolve only if the status code is less than 500
+        }
+    }
     useEffect(() => {
         async function getFiles() {
             const url = 'http://localhost:4000/api' + location
-            const options = {
-                validateStatus: function (status) {
-                    return status < 500; // Resolve only if the status code is less than 500
-                }
-            }
 
-            const { data, status } = await axios.get(url, options);
+            const { data, status } = await axios.get(url, axiosOptions);
             setNotFound(status === 404);
-            console.log(data)
-            data.files && setFiles(data.files);
-            data.location && setPath(data.location);
-            data.title && setSelectedFile(data.title);
-            data.title && setSelectedFilePath(data.location);
-            data.text && setSelectedFiletext(data.text);
-            data.info && setSelectedFileInfo(data.info);
+            setStates(data);
         }
         getFiles();
     }, [location])
+
+    async function requestHandler(request = '', reqData = {}) {
+        const url = 'http://localhost:4000/api' + location
+
+        const { data } = await axios.post(url, {
+            request: request,
+            data: reqData
+        }, axiosOptions);
+
+        switch (request) {
+            case 'rename':
+                console.log(data)
+                navigate(data.location + reqData.name + '.txt');
+                setStates(data);
+                break;
+            case 'copy':
+                setFiles(data.files || '');
+                setPath(data.location || '');
+                break;
+            case 'delete':
+                navigate('..');
+                break;
+            default:
+                console.error('Incorrect request type!');
+                break;
+        }
+    }
+
+    function setStates(data) {
+        data.files.sort();
+        data.files.sort((a, b) => {
+            return a.endsWith('.txt') && !b.endsWith('.txt') ? 1 : -1;
+        }); 
+        setFiles(data.files || '');
+        setPath(data.location || '');
+        setSelectedFile(data.title || '');
+        setSelectedFilePath(data.location || '');
+        setSelectedFiletext(data.text || '');
+        setSelectedFileInfo(data.info || '');
+    }
 
     return (
         <>
@@ -51,8 +86,8 @@ export default function Explorer() {
                             <FilePath />
                             <FileList list={files} path={path} />
                         </div>
-                        <FileDisplayer title={selectedFile} text={selectedFileText}/>
-                        <Info info={selectedFileInfo}/>
+                        <FileDisplayer title={selectedFile} text={selectedFileText} requestHandler={requestHandler} />
+                        <Info info={selectedFileInfo} />
                     </div>
 
             }

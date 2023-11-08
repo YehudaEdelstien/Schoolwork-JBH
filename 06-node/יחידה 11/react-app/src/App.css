@@ -9,8 +9,13 @@ html {
     padding: 0;
     display: inline-block;
     background-color: white;
-    color: transparent;
-    text-shadow: 0 0 0 black;
+}
+
+.input {
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 1rem !important;
+    width: initial !important;
 }
 
 .flex {
