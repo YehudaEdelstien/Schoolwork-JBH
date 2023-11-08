@@ -1,1 +1,1 @@
-file2 has the text of file2 n  
+File1 has some text

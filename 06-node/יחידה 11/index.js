@@ -7,7 +7,7 @@ const api = require('./api');
 
 const PORT = 4000;
 
-
+app.use(express.json());
 app.use(cors());
 
 

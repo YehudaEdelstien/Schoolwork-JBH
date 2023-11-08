@@ -2,6 +2,17 @@ html {
     min-height: 100vh;
 }
 
+.button {
+    width: 2rem;
+    height: 2rem;
+    border: initial;
+    padding: 0;
+    display: inline-block;
+    background-color: white;
+    color: transparent;
+    text-shadow: 0 0 0 black;
+}
+
 .flex {
     width: 100vw;
     display: flex;

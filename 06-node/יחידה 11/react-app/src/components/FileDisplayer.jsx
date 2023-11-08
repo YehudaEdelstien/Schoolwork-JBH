@@ -1,11 +1,13 @@
-export default function FileDisplayer({title, text}) {
+export default function FileDisplayer({ title, text }) {
 
     return (
         <div className="span2">
-            <p>Selected file: {title}</p>
+            <div>
+                Selected file: {title} 
+                {title && <button className="button">✏️</button>}
+            </div>
             <p>Text:</p>
             <pre>{text}</pre>
-            {/* <textarea type="week"></textarea> */}
         </div>
     )
 }
