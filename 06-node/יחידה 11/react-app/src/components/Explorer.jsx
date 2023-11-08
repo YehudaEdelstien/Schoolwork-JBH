@@ -64,8 +64,8 @@ export default function Explorer() {
     }
 
     function setStates(data) {
-        data.files.sort();
-        data.files.sort((a, b) => {
+        data.files && data.files.sort();
+        data.files && data.files.sort((a, b) => {
             return a.endsWith('.txt') && !b.endsWith('.txt') ? 1 : -1;
         }); 
         setFiles(data.files || '');
