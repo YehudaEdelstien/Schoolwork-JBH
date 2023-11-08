@@ -1,16 +1,11 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import axios from 'axios';
 
 import ActionButton from "./ActionButton";
 
 export default function FileDisplayer({ title, text, requestHandler }) {
-
+    
     const [isRenaming, setIsRenaming] = useState(false);
     const [newName, setNewName] = useState('')
-
-    const location = useLocation()
-
 
     return (
         <div className="span2">
@@ -19,7 +14,7 @@ export default function FileDisplayer({ title, text, requestHandler }) {
                 {!isRenaming
                     ?
                     <>
-                        &nbsp;{title}
+                        &nbsp;{title}&nbsp;&nbsp;
                         {title &&
                             <>
                                 <ActionButton action={() => setIsRenaming(true)}>

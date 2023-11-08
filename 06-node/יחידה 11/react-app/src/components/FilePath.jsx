@@ -25,7 +25,7 @@ function PathLink({el, index, arr}) {
 function useHrefHandler(index, arr) {
   let location = '.';
   for (let i = 1; i < index + 1; i++) {
-    location += '/' + decodeURI(arr[i]);
+    location += '/' + decodeURIComponent(arr[i]);
   }
   return location;
 }
