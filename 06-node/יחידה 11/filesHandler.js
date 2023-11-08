@@ -4,7 +4,6 @@ const path = require('path');
 
 
 async function getFile(filePath = '') {
-    console.log(filePath)
     filePath = decodeURI(filePath);
 
     const reqPath = createRequestPath(filePath);
