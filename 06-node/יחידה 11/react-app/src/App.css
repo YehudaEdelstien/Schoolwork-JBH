@@ -1,0 +1,38 @@
+html {
+    min-height: 100vh;
+}
+
+.button {
+    width: 2rem;
+    height: 2rem;
+    border: initial;
+    padding: 0;
+    display: inline-block;
+    background-color: white;
+    border: 0.5px solid lightslategray;
+}
+
+.input {
+    width: 2rem !important;
+    height: 2rem !important;
+    padding: 1rem !important;
+    width: initial !important;
+}
+
+.flex {
+    width: 100vw;
+    display: flex;
+}
+
+.span1 {
+    grid-column: span 1
+}
+
+.span2 {
+    grid-column: span 2
+}
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
