@@ -18,6 +18,17 @@ usersRouter.get('/exists', async (req, res) => {
     res.send(userExists);
 })
 
+usersRouter.get('/info', async (req, res) => {
+    try {
+        const {userName} = req.query;
+        console.log(userName)
+        const userData = await database.getUserInfo(userName);
+        res.send(userData);
+    } catch (err) {
+        if (err == 'ENOENT') res.sendStatus(404)
+        res.sendStatus(500);
+    }
+})
 
 router.get('/*', async (req, res) => {
     try {

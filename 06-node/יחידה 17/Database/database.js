@@ -27,10 +27,29 @@ async function verifyUser(userName, password) {
     const connection = await createConnection();
     const query = `
         SELECT EXISTS(SELECT 1 from users WHERE user_name = ? AND password = ?) AS data`;
-    const [[{data}]] = await connection.execute(query, [userName, password]);
+    const [[{ data }]] = await connection.execute(query, [userName, password]);
     connection.destroy();
     return Boolean(data);
 }
 
+async function getUserInfo(userName) {
+    const connection = await createConnection();
+    
+    const [[data]] = await connection.execute(`SELECT * FROM users WHERE user_name = ? LIMIT 1`, [userName]);
+    if (!data) throw new Error("ENOENT")
+;
+    const [[{todos}]] = await connection.execute(`SELECT COUNT(*) as todos FROM todo WHERE user_id = ?`, [data.id]);
+    const [[{posts}]] = await connection.execute(`SELECT COUNT(*) as posts FROM post WHERE user_id = ?`, [data.id]);
+    
+    data.todos = todos;
+    data.posts = posts;
+    delete data.password;
+    
+    connection.destroy();
+    return data;
+}
+
+
 module.exports.getRandomUser = getRandomUser;
 module.exports.verifyUser = verifyUser;
+module.exports.getUserInfo = getUserInfo;
