@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import axios from "axios"
 
-export default function Login() {
+export default function Login({ user, setUser }) {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (user) navigate('/main');
+    }, [user, navigate])
+
     async function fetchRandomUser() {
-        const {data} = await axios.get('http://localhost:4000/api/users/random');
+        const { data } = await axios.get('http://localhost:4000/api/users/random');
         setUserName(data.userName);
         setPassword(data.password);
     }
@@ -15,8 +22,14 @@ export default function Login() {
     async function onLogIn(e) {
         try {
             e.preventDefault()
-            const {data} = await axios.get(`http://localhost:4000/api/users/exists?userName=${userName}&password=${password}`);
-            data === true ? setErrorMessage('Success!') : setErrorMessage("No such username and password");
+            const { data } = await axios.get(`http://localhost:4000/api/users/exists?userName=${userName}&password=${password}`);
+            if (data === true) {
+                setUser(userName);
+                localStorage.setItem('user', userName);
+                navigate('/main');
+            } else {
+                setErrorMessage("No such username and password");
+            }
         } catch (err) {
             setErrorMessage(err);
         }
@@ -25,7 +38,7 @@ export default function Login() {
     return (
         <section className="container">
             <article>
-                <div id="userGetter" onClick={() => {fetchRandomUser()}}/>
+                <div id="userGetter" onClick={() => { fetchRandomUser() }} />
                 <form >
                     <h1>Log in</h1>
                     <label htmlFor="username">
