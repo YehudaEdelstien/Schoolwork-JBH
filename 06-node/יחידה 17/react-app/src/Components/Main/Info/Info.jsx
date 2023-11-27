@@ -36,7 +36,6 @@ export default function ({ userName }) {
                     <td>{userData && userData.todos}</td>
                 </tr>
             </table>
-
         </article>
     )
 }
