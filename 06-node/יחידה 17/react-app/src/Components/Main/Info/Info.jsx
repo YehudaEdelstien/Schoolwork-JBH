@@ -16,7 +16,7 @@ export default function ({ userName }) {
 
     return (
         
-        <section>
+        <article>
             <h2>Info</h2>
             <table role='grid'>
                 <tr>
@@ -37,6 +37,6 @@ export default function ({ userName }) {
                 </tr>
             </table>
 
-        </section>
+        </article>
     )
 }
