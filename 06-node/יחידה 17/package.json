@@ -4,12 +4,15 @@
   "description": "NodeJS coursework for JBH",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"nodemon .\\index.js\" \"npm --prefix ./react-app run start\""
   },
   "author": "Yehuda Edelstein",
   "license": "MIT-0",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "mysql2": "^3.6.5"
   },
   "devDependencies": {

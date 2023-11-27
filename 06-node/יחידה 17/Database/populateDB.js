@@ -3,14 +3,6 @@ const { faker } = require('@faker-js/faker');
 
 require('dotenv').config();
 
-const connection = mysql2.createConnection({
-    host: 'localhost',
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    multipleStatements: true,
-    database: process.env.DATABASE
-});
-
 function peopleGenerator(amount) {
     let str = '';
     for (let i = 1; i <= amount; i++) {
