@@ -35,7 +35,7 @@ async function verifyUser(userName, password) {
 async function getUserInfo(userName) {
     const connection = await createConnection();
     
-    const [[data]] = await connection.execute(`SELECT * FROM users WHERE user_name = ? LIMIT 1`, [userName]);
+    const [[data]] = await connection.execute(`SELECT id, user_name, UNIX_TIMESTAMP(register_date) AS register_date FROM users WHERE user_name = ? LIMIT 1`, [userName]);
     if (!data) throw new Error("ENOENT")
 ;
     const [[{todos}]] = await connection.execute(`SELECT COUNT(*) as todos FROM todo WHERE user_id = ?`, [data.id]);
@@ -43,12 +43,11 @@ async function getUserInfo(userName) {
     
     data.todos = todos;
     data.posts = posts;
-    delete data.password;
-    
+    data.register_date = new Date(data.register_date * 1000).toDateString()
+
     connection.destroy();
     return data;
 }
-
 
 module.exports.getRandomUser = getRandomUser;
 module.exports.verifyUser = verifyUser;
