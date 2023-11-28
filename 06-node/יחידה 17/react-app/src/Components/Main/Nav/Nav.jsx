@@ -12,9 +12,9 @@ export default function Nav({user, setUser}) {
                 <li><strong>{user}</strong></li>
             </ul>
             <ul>
-                <li><Link to="/info">info</Link></li>
-                <li><Link to="/posts">posts</Link></li>
-                <li><Link to="/todos">todos</Link></li>
+                <li><Link to="/info">Info</Link></li>
+                <li><Link to="/posts">Posts</Link></li>
+                <li><Link to="/todos">Todos</Link></li>
                 <li><Link to="/login" role="button" onClick={logOut}>Log out</Link></li>
             </ul>
         </nav>

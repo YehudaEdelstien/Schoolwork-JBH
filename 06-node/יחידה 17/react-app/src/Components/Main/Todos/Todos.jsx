@@ -14,10 +14,9 @@ export default function Todos( {userName} ) {
 
     async function updateTodo(index, state) {
         const id = todoArray[index].id;
-        const {data} = await axios.patch(`http://localhost:4000/api/todos?id=${id}&value=${state}`);
+        await axios.patch(`http://localhost:4000/api/todos?id=${id}&value=${state}`);
         const newArr = [...todoArray];
         newArr[index].done = state;
-        console.log(data)
         setTodoArray(newArr)
     }   
     
@@ -37,8 +36,6 @@ function TodoItem({todo, index, isDone, updateTodo}) {
     async function onChangeTodoState() {
         await updateTodo(index, !isDone);
     }
-
-    console.log(index +" " +isDone);
 
     return(
         <div>

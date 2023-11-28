@@ -60,7 +60,6 @@ async function getTodos(userName) {
     data.forEach(element => {
         element.done === '0' ? element.done = false : element.done = true;
     });
-    console.log(data)
     connection.destroy();
     return data;
 }
@@ -75,8 +74,21 @@ async function updateToDo(id, state) {
         WHERE id = ?
     `
     const [data] = await connection.execute(query, [state, id]);
-    console.log(data.info)
     connection.destroy();
+}
+
+async function getPosts(userName) {
+    const connection = await createConnection();
+
+    const [data] = await connection.execute(`SELECT id, title, text FROM post WHERE user_id = (SELECT id FROM users WHERE user_name = ?) ORDER BY id`, [userName])
+    
+    for (const element of data) {
+        const [comments] = await connection.execute(`SELECT id, text FROM comment WHERE post_id = ?`, [element.id])
+        element.comments = comments;
+    }
+
+    connection.destroy();
+    return data;
 }
 
 module.exports.getRandomUser = getRandomUser;
@@ -85,3 +97,5 @@ module.exports.getUserInfo = getUserInfo;
 
 module.exports.getTodos = getTodos;
 module.exports.updateToDo = updateToDo;
+
+module.exports.getPosts = getPosts;

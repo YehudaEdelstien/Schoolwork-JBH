@@ -12,15 +12,17 @@ function App() {
 
   useEffect(() => {
     const user = localStorage.getItem('user');
-    if (user) setUser(user);
+    user ? setUser(user) : setUser(null);
   }, [])
+
+  if (user === undefined) return <progress></progress>
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route index element={<Navigate to="/login" replace={true}/>}/>
         <Route path='login' element={<Login user={user} setUser={setUser}/>} />
         <Route path='*' element={<Main user={user} setUser={setUser}/>}/>
+        <Route index element={<Navigate to="/login" replace={true}/>}/>
       </Routes>
     </BrowserRouter>
   );
