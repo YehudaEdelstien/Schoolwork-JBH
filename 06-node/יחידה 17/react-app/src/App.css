@@ -1,6 +1,19 @@
+.iconButton {
+  width: auto;
+  height: 30px;
+
+  margin: 0 5px;
+  padding: 0 6px;
+
+  float: right;
+  
+  display: inline;
+}
+
 #userGetter {
   height: 10px;
   width: 10px;
   background-color: red;
   cursor: pointer;
 }
+

@@ -52,13 +52,13 @@ async function generateData() {
     const commentPerUser = 15;
 
     const query1 = `
-    INSERT INTO users (user_name, password)
-    VALUES ${peopleGenerator(userAmount)};
+        INSERT INTO users (user_name, password)
+        VALUES ${peopleGenerator(userAmount)};
     `;
 
     const query2 = `
-    INSERT INTO todo (user_id, todo)
-    VALUES ${todosGenerator(userAmount, todoPerUser)}
+        INSERT INTO todo (user_id, todo)
+        VALUES ${todosGenerator(userAmount, todoPerUser)}
     `;
 
     const query3 = `
@@ -67,8 +67,8 @@ async function generateData() {
     `;
 
     const query4 = `
-    INSERT INTO comment (user_id, post_id, text)
-    VALUES ${commentGenerator(userAmount, userAmount * postPerUser, commentPerUser)}
+        INSERT INTO comment (user_id, post_id, text)
+        VALUES ${commentGenerator(userAmount, userAmount * postPerUser, commentPerUser)}
     `;
 
     const connection = await mysql2.createConnection({

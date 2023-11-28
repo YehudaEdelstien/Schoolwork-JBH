@@ -70,6 +70,27 @@ postsRouter.get('/*', async (req, res) => {
     }
 })
 
+postsRouter.post('/comments', async (req, res) => {
+    try {
+        const { post } = req.query;
+        const {text} = req.body;
+        const data = await database.addComment(post, text);
+        res.status(200).send(data);
+    } catch (err) {
+        res.sendStatus(500);
+    }
+})
+
+postsRouter.delete('/comments', async (req, res) => {
+    try {
+        const { comment } = req.query;
+        await database.deleteComment(comment);
+        res.sendStatus(200);
+    } catch (err) {
+        res.sendStatus(500);
+    }
+})
+
 // default routers
 router.get('/*', async (req, res) => {
     res.sendStatus(404);

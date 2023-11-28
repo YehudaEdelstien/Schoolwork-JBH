@@ -91,6 +91,20 @@ async function getPosts(userName) {
     return data;
 }
 
+async function addComment(post, text) {
+    const connection = await createConnection();
+    await connection.execute(`INSERT INTO comment (user_id, post_id, text) VALUES (1, ?, ?)`, [post, text])
+    const [[data]] = await connection.execute(`SELECT LAST_INSERT_ID() as id`)
+    connection.destroy();
+    return data;
+}
+
+async function deleteComment(comment) {
+    const connection = await createConnection();
+    await connection.execute(`DELETE FROM comment WHERE id = ?`, [comment]);
+    connection.destroy();
+}
+
 module.exports.getRandomUser = getRandomUser;
 module.exports.verifyUser = verifyUser;
 module.exports.getUserInfo = getUserInfo;
@@ -99,3 +113,5 @@ module.exports.getTodos = getTodos;
 module.exports.updateToDo = updateToDo;
 
 module.exports.getPosts = getPosts;
+module.exports.addComment = addComment;
+module.exports.deleteComment = deleteComment;
