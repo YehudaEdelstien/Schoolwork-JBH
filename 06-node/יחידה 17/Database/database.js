@@ -49,6 +49,39 @@ async function getUserInfo(userName) {
     return data;
 }
 
+async function getTodos(userName) {
+    const connection = await createConnection();
+
+    const query =  `
+        SELECT id, todo, done FROM todo WHERE user_id = (SELECT id FROM users WHERE user_name = ?)
+    `
+    const [data] = await connection.execute(query, [userName]);
+
+    data.forEach(element => {
+        element.done === '0' ? element.done = false : element.done = true;
+    });
+    console.log(data)
+    connection.destroy();
+    return data;
+}
+
+async function updateToDo(id, state) {
+    const connection = await createConnection();
+    console.log(state)
+    state === 'true' ? state = 1 : state = 0;
+
+    const query =  `
+        UPDATE todo SET done = ?
+        WHERE id = ?
+    `
+    const [data] = await connection.execute(query, [state, id]);
+    console.log(data.info)
+    connection.destroy();
+}
+
 module.exports.getRandomUser = getRandomUser;
 module.exports.verifyUser = verifyUser;
 module.exports.getUserInfo = getUserInfo;
+
+module.exports.getTodos = getTodos;
+module.exports.updateToDo = updateToDo;

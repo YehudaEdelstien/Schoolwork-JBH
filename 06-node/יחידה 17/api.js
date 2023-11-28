@@ -3,8 +3,10 @@ const database = require('./Database/database');
 
 const router = express.Router();
 const usersRouter = express.Router();
+const todosRouter = express.Router();
 
 router.use('/users', usersRouter);
+router.use('/todos', todosRouter);
 
 // /users
 usersRouter.get('/random', async (req, res) => {
@@ -13,15 +15,14 @@ usersRouter.get('/random', async (req, res) => {
 })
 
 usersRouter.get('/exists', async (req, res) => {
-    const {userName, password} = req.query;
+    const { userName, password } = req.query;
     const userExists = await database.verifyUser(userName, password)
     res.send(userExists);
 })
 
 usersRouter.get('/info', async (req, res) => {
     try {
-        const {userName} = req.query;
-        console.log(userName)
+        const { userName } = req.query;
         const userData = await database.getUserInfo(userName);
         res.send(userData);
     } catch (err) {
@@ -30,21 +31,31 @@ usersRouter.get('/info', async (req, res) => {
     }
 })
 
-router.get('/*', async (req, res) => {
+
+// todos router
+todosRouter.get('/*', async (req, res) => {
     try {
-        res.send();
+        const { userName } = req.query;
+        const userData = await database.getTodos(userName);
+        res.send(userData);
     } catch (err) {
-        handleError(err, res)
+        res.sendStatus(500);
     }
 })
 
-function handleError(err, res) {
-    if (err.code === 'ENOENT') {
-        res.status(404).send('Not Found');
-    } else {
-        console.log(err)
-        res.status(500).end();
+todosRouter.patch('/*', async (req, res) => {
+    try {
+        const { id, value } = req.query;
+        const userData = await database.updateToDo(id, value);
+        res.sendStatus(200);
+    } catch (err) {
+        res.sendStatus(500);
     }
-}
+})
+
+router.get('/*', async (req, res) => {
+    res.sendStatus(404);
+})
+
 
 module.exports = router;

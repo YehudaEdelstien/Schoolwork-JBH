@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-export default function ({ userName }) {
+export default function Info ({ userName }) {
     const [userData, setUserData] = useState();
 
     useEffect(() => {
         async function fetchData() {
-            console.log(`http://localhost:4000/api/users/info?userName=${userName}`)
             const { data } = await axios.get(`http://localhost:4000/api/users/info?userName=${userName}`);
             console.log(data)
             setUserData(data);
         }
         fetchData()
-    }, [])
+    }, [userName])
 
     return (
         
